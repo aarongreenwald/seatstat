@@ -9,3 +9,6 @@ class Member:
 
     def __repr__(self):
         return self.name
+
+    def __json__(self, request):
+        return self.name

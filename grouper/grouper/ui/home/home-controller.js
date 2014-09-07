@@ -2,7 +2,7 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
     $scope.home = new function(){
         var private = {
             generateGroups: function(){
-                $http({method: 'GET', url: 'api/groups', data: {
+                $http({method: 'GET', url: 'api/groups', params: {
                         members: public.members,
                         illegalPairs: public.illegalPairs,
                         groupSize: public.groupSize             

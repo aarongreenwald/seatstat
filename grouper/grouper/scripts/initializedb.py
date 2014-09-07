@@ -12,8 +12,7 @@ from pyramid.paster import (
 from pyramid.scripts.common import parse_vars
 
 from ..models import (
-    DBSession,
-    MyModel,
+    DBSession,    
     Base,
     )
 

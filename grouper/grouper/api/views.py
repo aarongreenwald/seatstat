@@ -44,10 +44,14 @@ def groups(request):
                 'Jack', 'Harper',               
                 'Aiden',    'Abigail',              
                 'Elijah',   'Avery']
+                
+    print(request.matchdict['members'])
+    #members = request.matchdict['members']
+    #print(members)
 
     members = []
     for i in range(0, len(names)):
-        members += [{'name': Member(names[i])}]
+        members += [Member(names[i])]
 
     illegal_pairs = [
                 [members[0], members[2]],
