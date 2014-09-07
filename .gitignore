@@ -13,7 +13,9 @@ build/
 develop-eggs/
 dist/
 eggs/
-lib/
+#ag - added the asterisk and the exclusion for ui/common/lib/ so that javascript libraries are kept in source control until they're unnecessary
+lib/*
+!ui/common/lib/
 lib64/
 parts/
 sdist/
@@ -51,4 +53,5 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
 
