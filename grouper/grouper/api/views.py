@@ -33,23 +33,10 @@ def serialize(result_set):
 @view_config(route_name='groups', renderer='json')
 def groups(request):    
     
-    names = ['Liam', 'Olivia', 
-                'Noah', 'Emma', 
-                'Ethan', 'Sophia' ,
-                'Mason' ,'Ava',               
-                'Logan',    'Isabella',             
-                'Lucas',    'Mia',              
-                'Jacob',    'Charlotte',                
-                'Jackson',  'Emily',                
-                'Jack', 'Harper',               
-                'Aiden',    'Abigail',              
-                'Elijah',   'Avery']
-                
-    print(request.matchdict['members'])
-    #members = request.matchdict['members']
-    #print(members)
+    names = request.params.getall('members')
+    group_size = int(request.params['groupSize'])
 
-    members = []
+    members = []    
     for i in range(0, len(names)):
         members += [Member(names[i])]
 
@@ -66,6 +53,7 @@ def groups(request):
                 [members[16], members[17]],
             ]
 
-    member_set = MemberSet(members, 4, illegal_pairs)
+    illegal_pairs = []
+    member_set = MemberSet(members, group_size, illegal_pairs)
     return member_set.groupify()   
     
