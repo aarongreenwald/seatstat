@@ -4,6 +4,8 @@
 import math
 
 class MemberSet:
+    #todo: this class should not contain the grouping logic. it should 
+    #just manage membersets (collections of members)
     """
     def generate_groups():
         groups = [0] * group_count
