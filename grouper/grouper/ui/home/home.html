@@ -1,0 +1,9 @@
+<div ng-controller="HomeCtrl">
+    <div ng-repeat="member in home.members">
+        <input ng-model="member.name"/>
+    </div>
+    <button class="btn" ng-click="home.addMember()">Add</button>
+       <button class="btn" ng-click="home.generateGroups()">Go</button>
+
+</div>
+
