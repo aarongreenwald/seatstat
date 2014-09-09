@@ -3,7 +3,7 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
         var private = {
             generateGroups: function(){
                 $http({method: 'GET', url: 'api/groups', params: {
-                        members: public.members,
+                        members: _.pluck(public.members, 'name'),
                         illegalPairs: public.illegalPairs,
                         groupSize: public.groupSize             
                     }
@@ -18,12 +18,17 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
             generateGroups: private.generateGroups,            
             
             members: [],
-            illegalPairs: [],
+            illegalPairs: [['Liam', 'Olivia'], ['Lucas', 'Mia']],
             groupSize: 5,
             
             addMember: function(){
                 this.members.push({name: ''} )
+            },
+            
+            addIllegalPair: function(){
+                this.illegalPairs.push([])
             }
+            
         }
         
         names = ['Liam', 'Olivia', 
@@ -41,7 +46,6 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
         for (i in names){
             public.members.push({name: names[i]})
         }
-
         
         return public
     }
