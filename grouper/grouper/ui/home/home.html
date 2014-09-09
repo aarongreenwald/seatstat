@@ -1,24 +1,30 @@
-<div ng-controller="HomeCtrl">    
+<div ng-controller="HomeCtrl" class="container">    
     <div>
-        <button class="btn" ng-click="home.generateGroups()">Go</button>
-        <label> Group Size: <input ng-model="home.groupSize" /> </label>
-        <div ng-repeat="member in home.members">
-            <span class="member-name">
-                <input class="member-name" ng-model="member.name"/>
-            </span>
+        <div>
+            <button class="btn btn-default btn-sm pull-right" ng-click="home.generateGroups()">Go</button>
+        </div>
+        <div>
+            <label> Group Size: <input class="member-name" min="1" ng-model="home.groupSize" type="number"/> </label>        
+        </div>
+        <div>
+            <div ng-repeat="member in home.members" class="member-name">
+                <span class="member-name">
+                    <input class="member-name" ng-model="member.name"/>
+                </span>
+            </div>
         </div>
     </div>        
     <div>
         <div>
-            <button class="btn" ng-click="home.addMember()">Add</button>                    
+            <button class="btn btn-default btn-sm" ng-click="home.addMember()">Add</button>                    
         </div>
         <div>
             <div>
-                <div ng-repeat="pair in home.illegalPairs">                    
-                        <input class="member-name" ng-model="pair[0]"/>
+                <div ng-repeat="pair in home.illegalPairs" class="member-name">                    
+                        <input class="member-name" ng-model="pair[0]" style="margin-right:10px;"/>
                         <input class="member-name" ng-model="pair[1]"/>
                 </div>
-                <button class="btn" ng-click="home.addIllegalPair()">Add</button>
+                <button class="btn btn-default btn-sm" ng-click="home.addIllegalPair()">Add</button>
             </div> 
         </div>
     </div>
@@ -30,9 +36,12 @@
     </div>    
 </div>
 <style>
+    div.member-name{
+        margin:10px;
+    }
     span.member-name {
-        padding:5px;
-        float:left;
+        padding:5px;        
+        /*float:left;*/
     }
     input.member-name {
         border-radius: 3px;

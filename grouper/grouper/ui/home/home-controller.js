@@ -1,15 +1,20 @@
-bling.home.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
+bling.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
     $scope.home = new function(){
         var private = {
-            generateGroups: function(){
+            generateGroups: function(){ 
                 $http({method: 'GET', url: 'api/groups', params: {
-                        members: _.pluck(public.members, 'name'),
-                        illegalPairs: public.illegalPairs,
+                        members: _.reject(_.pluck(public.members, 'name'), function(member) { return !member }),
+                        illegalPairs: _.reject(public.illegalPairs, function(pair) { return !pair[0] || !pair[1]}),
                         groupSize: public.groupSize             
                     }
                 })
                 .success(function(data){
                     public.groups = data
+                    $window.localStorage.setItem('grouper', angular.toJson({
+                        members: public.members,
+                        illegalPairs: public.illegalPairs,
+                        groupSize: public.groupSize
+                    }))
                 })
             }
         }
@@ -18,7 +23,7 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
             generateGroups: private.generateGroups,            
             
             members: [],
-            illegalPairs: [['Liam', 'Olivia'], ['Lucas', 'Mia']],
+            illegalPairs: [],
             groupSize: 5,
             
             addMember: function(){
@@ -30,23 +35,8 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
             }
             
         }
-        
-        names = ['Liam', 'Olivia', 
-                'Noah', 'Emma', 
-                'Ethan', 'Sophia' ,
-                'Mason' ,'Ava',               
-                'Logan',    'Isabella',             
-                'Lucas',    'Mia',              
-                'Jacob',    'Charlotte',                
-                'Jackson',  'Emily',                
-                'Jack', 'Harper',               
-                'Aiden',    'Abigail',              
-                'Elijah',   'Avery']
-        
-        for (i in names){
-            public.members.push({name: names[i]})
-        }
-        
+             
+        _.extend(public, JSON.parse($window.localStorage.getItem('grouper')))
         return public
     }
 }])
