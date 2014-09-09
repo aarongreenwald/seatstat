@@ -1,17 +1,54 @@
 <div ng-controller="HomeCtrl">    
     <div>
-        <div ng-repeat="member in home.members" style="float:left">
-            <input ng-model="member.name"/>
-        </div>
-    </div>        
-    <div style="float:none">
-        <button class="btn" ng-click="home.addMember()">Add</button>
         <button class="btn" ng-click="home.generateGroups()">Go</button>
         <label> Group Size: <input ng-model="home.groupSize" /> </label>
+        <div ng-repeat="member in home.members">
+            <span class="member-name">
+                <input class="member-name" ng-model="member.name"/>
+            </span>
+        </div>
+    </div>        
+    <div>
+        <div>
+            <button class="btn" ng-click="home.addMember()">Add</button>                    
+        </div>
+        <div>
+            <div>
+                <div ng-repeat="pair in home.illegalPairs">                    
+                        <input class="member-name" ng-model="pair[0]"/>
+                        <input class="member-name" ng-model="pair[1]"/>
+                </div>
+                <button class="btn" ng-click="home.addIllegalPair()">Add</button>
+            </div> 
+        </div>
     </div>
     <div>
-        <div ng-repeat="group in home.groups">
-            Group: <span ng-repeat="member in group">{{member.name}}</span>
+        <div ng-repeat="group in home.groups" class="group">
+            <div class="group-header">Group {{$index + 1}}: </div>
+            <div ng-repeat="member in group">{{member}}</span>
         </div>    
     </div>    
 </div>
+<style>
+    span.member-name {
+        padding:5px;
+        float:left;
+    }
+    input.member-name {
+        border-radius: 3px;
+        border: 1px solid rgba(128, 128, 128, 0.57);
+        padding: 0 4px 0 4px;
+    }
+        input.member-name:focus {
+            border: none;
+            box-shadow: 0px 0px 3px 0px rgba(49, 9, 150, 0.89);
+        }
+    .group {
+        padding:10px;
+        float:left;
+    }
+    .group-header{
+        text-decoration:underline;
+        font-weight:bold;
+    }
+</style>
