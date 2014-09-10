@@ -1,39 +1,64 @@
 <div ng-controller="HomeCtrl" class="container">    
-    <div>
-        <div>
-            <button class="btn btn-default btn-sm pull-right" ng-click="home.generateGroups()">Go</button>
+    <div style="margin-top:25px;">
+            <button class="btn btn-info btn-sm pull-right" ng-click="home.generateGroups()">Go!</button>
         </div>
-        <div>
-            <label> Group Size: <input class="member-name" min="1" ng-model="home.groupSize" type="number"/> </label>        
-        </div>
+    <div ng-if="home.step === 0">
+        <h2>Students</h2>
+        
         <div>
             <div ng-repeat="member in home.members" class="member-name">
                 <span class="member-name">
-                    <input class="member-name" ng-model="member.name"/>
+                    <input class="member-name" ng-model="member.name" 
+                        ng-change="home.memberChange($index)" ng-blur="home.memberBlur($index)"/>
                 </span>
             </div>
         </div>
-    </div>        
-    <div>
-        <div>
+        <!--<div>
             <button class="btn btn-default btn-sm" ng-click="home.addMember()">Add</button>                    
-        </div>
+        </div>-->
         <div>
-            <div>
+            Divide {{home.members.length - 1}} students into
+            <span ng-show="home.evenDivision()">{{(home.members.length - 1) / home.groupSize}} </span>
+             groups of 
+                <input class="group-size" min="1" ng-model="home.groupSize" type="number"/>  each.
+            <div ng-show="!home.evenDivision()">You can't divide {{home.members.length - 1}} by {{home.groupSize}} evenly, so you need to decide what to do 
+            with the extra students. You can: </div>
+                
+        </div>
+    </div>        
+    <div ng-if="home.step === 1">
+        <h2>Restrictions</h2>
+        <div class="row">
+            <div class="col-sm-6">
                 <div ng-repeat="pair in home.illegalPairs" class="member-name">                    
                         <input class="member-name" ng-model="pair[0]" style="margin-right:10px;"/>
                         <input class="member-name" ng-model="pair[1]"/>
                 </div>
-                <button class="btn btn-default btn-sm" ng-click="home.addIllegalPair()">Add</button>
+                <!--<button class="btn btn-default btn-sm" ng-click="home.addIllegalPair()">Add</button>-->
             </div> 
+            <div class="col-sm-4">
+                <div ng-repeat="member in home.members">{{member.name}}</div>
+            </div>
         </div>
     </div>
-    <div>
-        <div ng-repeat="group in home.groups" class="group">
-            <div class="group-header">Group {{$index + 1}}: </div>
-            <div ng-repeat="member in group">{{member}}</span>
-        </div>    
-    </div>    
+    <div ng-if="home.step === 2">
+        <div class="row">
+            <div class="col-xs-12">
+                <div ng-repeat="group in home.groups" class="group">
+                    <div class="group-header">Group {{$index + 1}}: </div>
+                    <div ng-repeat="member in group">{{member}}</div>        
+                </div> 
+            </div>
+        </div>        
+    </div>     
+    <div class="row" style="margin-top:25px;">
+        <div class="col-xs-3">
+            <button ng-if="home.step !== 0" class="btn btn-default btn-sm" ng-click="home.step = home.step - 1">Back</button>  
+        </div>
+        <div class="col-xs-3">
+            <button ng-if="home.step !== 2" class="btn btn-default btn-sm" ng-click="home.step = home.step + 1">Next</button>                    
+        </div>        
+    </div>   
 </div>
 <style>
     div.member-name{
@@ -43,19 +68,23 @@
         padding:5px;        
         /*float:left;*/
     }
-    input.member-name {
+    input {
         border-radius: 3px;
         border: 1px solid rgba(128, 128, 128, 0.57);
-        padding: 0 4px 0 4px;
+        padding: 0 4px 0 4px;        
     }
-        input.member-name:focus {
+        input:focus {
             border: none;
             box-shadow: 0px 0px 3px 0px rgba(49, 9, 150, 0.89);
         }
+    input.group-size {
+        width:40px;
+    }
     .group {
         padding:10px;
         float:left;
     }
+    
     .group-header{
         text-decoration:underline;
         font-weight:bold;

@@ -20,11 +20,19 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope
         }
         
         var public = {          
-            generateGroups: private.generateGroups,            
-            
+            generateGroups: function(){                
+                private.generateGroups()
+                this.step = 2
+            } ,
+                       
+            step: 0,
             members: [],
             illegalPairs: [],
             groupSize: 5,
+            
+            evenDivision: function(){
+                return (this.members.length  - 1) % this.groupSize === 0
+            },
             
             addMember: function(){
                 this.members.push({name: ''} )
@@ -32,6 +40,23 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope
             
             addIllegalPair: function(){
                 this.illegalPairs.push([])
+            }, 
+            
+            memberChange: function(index){
+                var last = index === this.members.length - 1                
+                if (this.members[index].name.trim() === ''){
+                    if (index === this.members.length - 2){
+                        this.members.pop()
+                    }
+                }else if (last){
+                    this.addMember()
+                }
+            },
+            
+            memberBlur: function(index){
+                if (this.members[index].name.trim() === '' && index !== this.members.length - 1){
+                    this.members.splice(index, 1)
+                }
             }
             
         }
