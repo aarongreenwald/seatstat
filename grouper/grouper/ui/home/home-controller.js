@@ -42,6 +42,19 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope
                 this.illegalPairs.push([])
             }, 
             
+            addToIllegalPair: function(member){
+                if (this.illegalPairs[this.illegalPairs.length - 1].length === 1){
+                    this.illegalPairs[this.illegalPairs.length - 1].push(member.name)
+                }
+                else {
+                    this.illegalPairs.push([member.name])
+                }
+            },
+            
+            removeIllegalPair: function(index){
+                this.illegalPairs.splice(index, 1)
+            },
+            
             memberChange: function(index){
                 var last = index === this.members.length - 1                
                 if (this.members[index].name.trim() === ''){

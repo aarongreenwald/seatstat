@@ -29,15 +29,21 @@
     <div ng-if="home.step === 1">
         <h2>Restrictions</h2>
         <div class="row">
-            <div class="col-sm-6">
-                <div ng-repeat="pair in home.illegalPairs" class="member-name">                    
-                        <input class="member-name" ng-model="pair[0]" style="margin-right:10px;"/>
-                        <input class="member-name" ng-model="pair[1]"/>
-                </div>
+            <div class="col-sm-6">                            
+                <table>
+                    <tbody>
+                        <tr ng-repeat="pair in home.illegalPairs" >
+                            <td class="pair-item"><div>{{pair[0]}}</div></td>
+                            <td class="pair-item">--------------</td>
+                            <td class="pair-item"><div ng-show="pair[1].length">{{pair[1]}}</div></td>
+                            <td><span ng-click="home.removeIllegalPair($index)" title="Remove" class="glyphicon glyphicon-remove icon-button"/></td>
+                        </tr>
+                    </tbody>
+                </table>                
                 <!--<button class="btn btn-default btn-sm" ng-click="home.addIllegalPair()">Add</button>-->
             </div> 
             <div class="col-sm-4">
-                <div ng-repeat="member in home.members">{{member.name}}</div>
+                <div ng-repeat="member in home.members" ng-click="home.addToIllegalPair(member)">{{member.name}}</div>
             </div>
         </div>
     </div>
@@ -88,5 +94,22 @@
     .group-header{
         text-decoration:underline;
         font-weight:bold;
+    }
+    td.pair-item{     
+        padding:7px 15px;
+    }   
+    td.pair-item > div{        
+        border: 1px solid rgba(128, 128, 128, 0.65);
+        padding: 5px;
+        border-radius: 3px;      
+        min-width:125px;
+        background-color: rgba(160, 153, 153, 0.22 );
+    }
+    .icon-button{
+        cursor:pointer;
+        opacity:.6;
+    }
+    .icon-button:hover{
+        opacity:.9;
     }
 </style>
