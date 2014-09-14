@@ -1,7 +1,8 @@
 <div ng-controller="HomeCtrl" class="container">    
     <div style="margin-top:25px;">
-            <button class="btn btn-info btn-sm pull-right" ng-click="home.generateGroups()">Go!</button>
-        </div>
+            <button ng-if="home.step !== 2" class="btn btn-info btn-sm pull-right" ng-click="home.generateGroups()">Go!</button>
+            <button ng-if="home.step === 2" class="btn btn-info btn-sm pull-right" ng-click="home.step = 0">Reset</button>
+    </div>
     <div ng-if="home.step === 0">
         <h2>Students</h2>
         
@@ -12,10 +13,7 @@
                         ng-change="home.memberChange($index)" ng-blur="home.memberBlur($index)"/>
                 </span>
             </div>
-        </div>
-        <!--<div>
-            <button class="btn btn-default btn-sm" ng-click="home.addMember()">Add</button>                    
-        </div>-->
+        </div>        
         <div>
             Divide {{home.members.length - 1}} students into
             <span ng-show="home.evenDivision()">{{(home.members.length - 1) / home.groupSize}} </span>
@@ -39,8 +37,7 @@
                             <td><span ng-click="home.removeIllegalPair($index)" title="Remove" class="glyphicon glyphicon-remove icon-button"/></td>
                         </tr>
                     </tbody>
-                </table>                
-                <!--<button class="btn btn-default btn-sm" ng-click="home.addIllegalPair()">Add</button>-->
+                </table>                                
             </div> 
             <div class="col-sm-4">
                 <div ng-repeat="member in home.members" ng-click="home.addToIllegalPair(member)">{{member.name}}</div>
@@ -57,12 +54,12 @@
             </div>
         </div>        
     </div>     
-    <div class="row" style="margin-top:25px;">
+    <div class="row" style="margin-top:25px;" ng-if="home.step !== 2">
         <div class="col-xs-3">
             <button ng-if="home.step !== 0" class="btn btn-default btn-sm" ng-click="home.step = home.step - 1">Back</button>  
         </div>
         <div class="col-xs-3">
-            <button ng-if="home.step !== 2" class="btn btn-default btn-sm" ng-click="home.step = home.step + 1">Next</button>                    
+            <button ng-if="home.step !== 1" class="btn btn-default btn-sm" ng-click="home.step = home.step + 1">Next</button>                    
         </div>        
     </div>   
 </div>
