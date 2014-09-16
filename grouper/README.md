@@ -14,4 +14,6 @@ Clone this repository and cd to the directory containing this file. Then:
 
 Have fun!
 
+For production, you will need to add production.ini and set the port correctly.
+
 (You may need to install some things along the way, like virtualenv. It should be self-explanatory, unless you're on a Windows system. Then I recommend switching operating systems or finding someone with more patience than I have.)
