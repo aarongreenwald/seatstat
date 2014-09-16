@@ -26,7 +26,7 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope
             } ,
                        
             step: 0,
-            members: [],
+            members: [{name: ''}],
             illegalPairs: [],
             groupSize: 5,
             
