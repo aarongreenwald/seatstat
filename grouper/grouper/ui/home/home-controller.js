@@ -34,8 +34,8 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope
                 return (this.members.length  - 1) % this.groupSize === 0
             },
             
-            addToIllegalPair: function(member){
-                if (this.illegalPairs[this.illegalPairs.length - 1].length === 1){
+            addToIllegalPair: function(member){                
+                if (this.illegalPairs.length > 0 && this.illegalPairs[this.illegalPairs.length - 1].length === 1){
                     this.illegalPairs[this.illegalPairs.length - 1].push(member.name)
                 }
                 else {
