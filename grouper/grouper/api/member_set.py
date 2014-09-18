@@ -1,6 +1,3 @@
-#quick and dirty experiment - if I can get this working properly,
-#this project is viable. 
-
 import math
 
 class MemberSet:

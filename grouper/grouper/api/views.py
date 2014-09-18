@@ -9,10 +9,6 @@ import json
 
 import pyramid
 
-from .models import (
-    DBSession 
-    )
-
 @view_config(route_name='groups', renderer='json') #using the json renderer double escapes the strings
 def groups(request):    
         

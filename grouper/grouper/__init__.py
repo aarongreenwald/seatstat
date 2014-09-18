@@ -1,14 +1,8 @@
 from pyramid.config import Configurator
-from sqlalchemy import engine_from_config
 
 import api.models
 
 def main(global_config, **settings):
-    
-    engine = engine_from_config(settings, 'sqlalchemy.')    
-    
-    api.models.DBSession.configure(bind=engine)
-    api.models.Base.metadata.bind = engine
     
     config = Configurator(settings=settings)
     config.include('pyramid_chameleon')        

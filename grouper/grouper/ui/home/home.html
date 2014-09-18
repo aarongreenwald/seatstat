@@ -8,7 +8,7 @@
         
         <div>
             <div ng-repeat="member in home.members" class="member-name">
-                <span class="member-name">
+                <span class="member-name" >
                     <input class="member-name" ng-model="member.name" 
                         ng-change="home.memberChange($index)" ng-blur="home.memberBlur($index)"/>
                 </span>
