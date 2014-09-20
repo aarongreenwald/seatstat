@@ -34,7 +34,10 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope
                 return (this.members.length  - 1) % this.groupSize === 0
             },
             
-            addToIllegalPair: function(member){                
+            addToIllegalPair: function(member){    
+                if (!public.validInIllegalPair(member)){
+                    return
+                }            
                 if (this.illegalPairs.length > 0 && this.illegalPairs[this.illegalPairs.length - 1].length === 1){
                     this.illegalPairs[this.illegalPairs.length - 1].push(member.name)
                 }
@@ -48,7 +51,19 @@ bling.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope
             },
             
             midPair: function(){
-                return this.illegalPairs[this.illegalPairs.length - 1].length < 2
+                return this.illegalPairs.length && this.illegalPairs[this.illegalPairs.length - 1].length < 2
+            },
+            
+            validInIllegalPair: function(member){
+                if (public.midPair()){                                    
+                    for (var i in this.illegalPairs){
+                        if (this.illegalPairs[i].indexOf(member.name) !== -1 &&
+                            this.illegalPairs[i].indexOf(this.illegalPairs[this.illegalPairs.length - 1][0]) !== -1){
+                            return false
+                        }
+                    }
+                }
+                return true
             },
             
             memberChange: function(index){

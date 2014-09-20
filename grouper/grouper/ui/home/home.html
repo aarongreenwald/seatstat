@@ -6,7 +6,7 @@
     <div ng-if="home.step === 0">
         <h2>Students</h2>
         
-        <div>
+        <div class="row" style="max-width:600px">
             <div ng-repeat="member in home.members" class="member-name">
                 <span class="member-name" >
                     <input class="member-name" ng-model="member.name" 
@@ -14,13 +14,22 @@
                 </span>
             </div>
         </div>        
-        <div>
+        <div class="row">
             Divide {{home.members.length - 1}} students into
             <span ng-show="home.evenDivision()">{{(home.members.length - 1) / home.groupSize}} </span>
              groups of 
                 <input class="group-size" min="1" ng-model="home.groupSize" type="number"/>  each.
             <div ng-show="!home.evenDivision()">You can't divide {{home.members.length - 1}} by {{home.groupSize}} evenly, so you need to decide what to do 
-            with the extra students. You can: </div>
+            with the extra students. You can: 
+                <ul>
+                    <li>Have {{((home.members.length - 1) / home.groupSize) + 1}} tables, with <!--the groupsize less the remainder is what's missing from that number of tables--></li>
+                    <li>Have {{((home.members.length - 1) / home.groupSize)}} tables, with <!--the the remainder is what's extra, one on each of that number of tables--></li>
+                    <!--there are two main configurations: an extra table or not, with an extra table, one
+                    table will be short, without, one table will have extra. The overage can be left on one table
+                    or spread as evenly as possible. Same for the short. Easier is to make an assumption about spreading 
+                    evenly, ask if they want more or less, or 'another configuration', which will be entirely customizable. -->                    
+                </ul>
+            </div>
                 
         </div>
     </div>        
@@ -28,19 +37,25 @@
         <h2>Restrictions</h2>
         <div class="row">
             <div class="col-sm-6">                            
-                <table>
+                <table ng-show="home.illegalPairs.length">
                     <tbody>
                         <tr ng-repeat="pair in home.illegalPairs" >
-                            <td class="pair-item"><div>{{pair[0]}}</div></td>
-                            <td class="pair-item">--------------</td>
+                            <td class="pair-item"><div>{{pair[0]}}</div></td>                            
                             <td class="pair-item"><div ng-show="pair[1].length">{{pair[1]}}</div></td>
                             <td><span ng-click="home.removeIllegalPair($index)" title="Remove" class="glyphicon glyphicon-remove icon-button"/></td>
                         </tr>
                     </tbody>
-                </table>                                
+                </table>
+                <div ng-show="!home.illegalPairs.length">
+                    You have no restrictions on placement. Start by clicking on the names on the right to add
+                    pairs  of students that cannot sit together.
+                </div>                                
             </div> 
             <div class="col-sm-4">
-                <div ng-repeat="member in home.members" ng-click="home.addToIllegalPair(member)">{{member.name}}</div>
+                <div ng-repeat="member in home.members" ng-click="home.addToIllegalPair(member)" 
+                class="illegal-pair-member"
+                ng-class="{'invalid': !home.validInIllegalPair(member)}"
+                >{{member.name}}</div>
             </div>
         </div>
     </div>
@@ -48,8 +63,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <div ng-repeat="group in home.groups" class="group">
-                    <div class="group-header">Group {{$index + 1}}: </div>
-                    <div ng-repeat="member in group">{{member}}</div>        
+                    <div class="group-header">Table {{$index + 1}} </div>
+                    <div class="group-member" ng-repeat="member in group">{{member}}</div>        
                 </div> 
             </div>
         </div>        
@@ -69,7 +84,7 @@
     }
     span.member-name {
         padding:5px;        
-        /*float:left;*/
+        float:left;
     }
     input {
         border-radius: 3px;
@@ -84,13 +99,22 @@
         width:40px;
     }
     .group {
-        padding:10px;
-        float:left;
+        float: left;
+        margin: 20px;
+        border: 1px solid gray;
+        border-radius: 4px;
+        width: 150px;
     }
     
-    .group-header{
-        text-decoration:underline;
-        font-weight:bold;
+    .group-header{        
+        font-weight: bold;
+        border-bottom: 1px solid gray;
+        background: rgba(211, 211, 211, 0.37);
+        text-align: center;
+        padding:4px;
+    }
+    .group-member{
+        margin-left:7px;
     }
     td.pair-item{     
         padding:7px 15px;
@@ -109,4 +133,17 @@
     .icon-button:hover{
         opacity:.9;
     }
+    .illegal-pair-member{
+        padding:5px;
+        float:left;
+        width:150px;               
+    }
+     .illegal-pair-member:not(.invalid):hover{
+        cursor:pointer; 
+        color:blue;
+    }
+    .illegal-pair-member.invalid{
+        opacity:.3;
+    }
+    
 </style>
