@@ -1,0 +1,29 @@
+<div ng-controller="HeaderCtrl">
+    <div class="banner-message" ng-class="{'visible': header.showBannerMessage}" >
+        {{header.bannerMessage}}
+        <a ng-click="header.hideBannerMessage(false)">Ok</a>        
+        <a ng-click="header.hideBannerMessage(true)">Don't show this again</a>        
+    </div>        
+</div>
+<div>
+    <ng-include src="'home/home.html'" />
+</div>
+<style>
+    .banner-message{
+        background-color: rgba(253, 203, 103, 1);;        
+        width: 100%;
+        opacity:0;
+        padding:10px;        
+        transition: ease 1s all;
+        height:auto;
+        left:0;
+        position:absolute;
+    }
+    .banner-message > a {
+        margin-left:15px;
+        cursor:pointer;        
+    }    
+    .banner-message.visible{
+        opacity:1;                
+    }
+</style>
