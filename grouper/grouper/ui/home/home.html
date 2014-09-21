@@ -4,7 +4,7 @@
             <button ng-if="home.step === 2" class="btn btn-info btn-sm pull-right" ng-click="home.step = 0">Reset</button>
     </div>
     <div ng-if="home.step === 0">
-        <h2>Students</h2>
+        <div class="step-header">Students</div>
         
         <div class="row" style="max-width:600px">
             <div ng-repeat="member in home.members" class="member-name">
@@ -34,7 +34,7 @@
         </div>
     </div>        
     <div ng-if="home.step === 1">
-        <h2>Restrictions</h2>
+        <div class="step-header">Restrictions</div>
         <div class="row">
             <div class="col-sm-6">                            
                 <table ng-show="home.illegalPairs.length">
@@ -79,6 +79,9 @@
     </div>   
 </div>
 <style>
+    div.step-header{
+        font-size:large;
+    }
     div.member-name{
         margin:10px;
     }
@@ -92,8 +95,7 @@
         padding: 0 4px 0 4px;        
     }
         input:focus {
-            border: none;
-            box-shadow: 0px 0px 3px 0px rgba(49, 9, 150, 0.89);
+            box-shadow: 0px 0px 3px 0px rgba(49, 9, 150, 0.89);            
         }
     input.group-size {
         width:40px;
@@ -140,7 +142,7 @@
     }
      .illegal-pair-member:not(.invalid):hover{
         cursor:pointer; 
-        color:blue;
+        color:blue;        
     }
     .illegal-pair-member.invalid{
         opacity:.3;
