@@ -1,4 +1,4 @@
-bling.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
+grouper.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
     $scope.home = new function(){
         var private = {
             generateGroups: function(){ 

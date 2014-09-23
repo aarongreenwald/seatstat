@@ -1,0 +1,29 @@
+<div ng-controller="HeaderCtrl">
+    <div class="banner-message" ng-class="{'visible': header.showBannerMessage}" >
+        <ng-include src="'header/banner.html'"/>        
+    </div>        
+</div>
+<div>
+    <ng-include src="'home/home.html'" />
+</div>
+<style>
+    .banner-message{
+        background-color: rgba(253, 203, 103, 1);;        
+        width: 100%;
+        opacity:0;
+        padding:10px;        
+        transition: ease 1s all;
+        height:auto;
+        left:0;
+        top:0;
+        position:absolute;
+        z-index:-1;
+    }
+    div.hide-message > a {
+        margin-left:15px;            
+    }    
+    .banner-message.visible{
+        opacity:1;  
+        z-index:999;              
+    }
+</style>

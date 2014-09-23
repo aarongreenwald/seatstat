@@ -1,16 +1,16 @@
-var bling = angular.module('grouper', [
+var grouper = angular.module('grouper', [
     'ui.router',
     'grouper.home'
     ])
      
-bling.config(function($stateProvider, $urlRouterProvider) {
+grouper.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
 
   $stateProvider
-    .state('home', {
+    .state('header', {
       url: "/",
-      templateUrl: "home/home.html"      
+      templateUrl: "header/header.html"      
     })
 })
 
-bling.home = angular.module('grouper.home', [])
+grouper.home = angular.module('grouper.home', [])
