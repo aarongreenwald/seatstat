@@ -20,6 +20,9 @@ def main(global_config, **settings):
         
      #for the main entry point to the SPA
     config.add_route('app', '/') 
+    #pages that aren't part of the spa are rendered server side, mostly 
+    #for SEO purposes
+    config.add_route('about', '/about') 
     
     #routes
     config.add_route('groups', '/api/groups')    

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html metal:define-macro="layout" lang="en" >    
+    <head>
+        <meta charset="utf-8">
+        <title>${page_title}</title>
+    </head>
+    <body>
+        <div>
+            <a href="/">Grouper</a>
+            <a href="/about">About</a>
+        </div>
+
+        <div metal:define-slot="content"></div>
+    </body>
+</html>

@@ -29,7 +29,7 @@ grouper.controller('HeaderCtrl', ['$scope', '$window', '$timeout', function($sco
             bannerMessage: 'Welcome to grouper! This app is not ready for public consumption. ' + 
                 'Both the layout and content are subject to change dramatically and without notice, ' +
                 'and the accuracy of the results is not guaranteed. ' +
-                'You are welcome (and encouraged) to play with it, though, and direct questions, comments, and feedback ' +
+                'Please feel free to try it out and direct questions, comments, and feedback ' +
                 'to aaron@aarongreenwald.com. Thanks.',
                 
             hideBannerMessage: function(permanent){

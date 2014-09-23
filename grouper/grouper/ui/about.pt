@@ -1,0 +1,6 @@
+<div metal:use-macro="layout">
+    <div metal:fill-slot="content">
+        Welcome to grouper, the classroom seating solution. This page is under construction.
+        Thank you for your patience.
+    </div>
+</div>
