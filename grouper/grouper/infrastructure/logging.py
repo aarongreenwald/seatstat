@@ -8,6 +8,6 @@ def log_user_access(event):
     request = event.request
     user_access = UserAccess(request.method + ' - ' + request.url)
     print(user_access)
-    DBSession.add(user_access)
-    transaction.commit()
+    #DBSession.add(user_access)
+    #transaction.commit()
         
