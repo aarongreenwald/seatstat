@@ -1,5 +1,12 @@
 grouper.controller('HeaderCtrl', ['$scope', '$window', '$timeout', function($scope, $window, $timeout){
     $scope.header = new function(){
+        //every time the message is changed, the user's previous 'Don't show this again'
+        //selection is made irrelevant by updating the bannerMessageId value.
+        //Perhaps I can do it off of a hash of the content of the message, but that might be too aggressive.
+        //Small changes shouldn't invalidate the user's selection
+        //Also, I should clear localStorage every now and then
+        var bannerMessageId = 1       
+        
         var utilities = {
             hash: function(str){
     
@@ -11,12 +18,8 @@ grouper.controller('HeaderCtrl', ['$scope', '$window', '$timeout', function($sco
                 }
                 return hash
             },
-            initialize: function(){
-                //every time the message is changed, the user's previous 'Don't show this again'
-                //selection is made irrelevant. This might be too aggressive, because I might want 
-                //to tweak the message without substantive difference
-                //Also, I should clear localStorage every now and then
-                if ($window.localStorage['grouper.header.hideBanner.'  + utilities.hash(api.bannerMessage)] !== "true"){                                        
+            initialize: function(){                
+                if ($window.localStorage['grouper.header.hideBanner.'  + bannerMessageId.toString()] !== "true"){                                        
                     $timeout(function(){
                         api.showBannerMessage = true    
                     }, 1000)
@@ -25,17 +28,11 @@ grouper.controller('HeaderCtrl', ['$scope', '$window', '$timeout', function($sco
         }
         
         var api = {
-            showBannerMessage: false,
-            bannerMessage: 'Welcome to grouper! This app is not ready for public consumption. ' + 
-                'Both the layout and content are subject to change dramatically and without notice, ' +
-                'and the accuracy of the results is not guaranteed. ' +
-                'Please feel free to try it out and direct questions, comments, and feedback ' +
-                'to aaron@aarongreenwald.com. Thanks.',
-                
+            showBannerMessage: false,                            
             hideBannerMessage: function(permanent){
                 this.showBannerMessage = false
                 if (permanent){
-                    $window.localStorage['grouper.header.hideBanner.' + utilities.hash(this.bannerMessage)] = "true"
+                    $window.localStorage['grouper.header.hideBanner.' + bannerMessageId.toString()] = "true"
                 }
             }
         }

@@ -2,14 +2,28 @@
 <html metal:define-macro="layout" lang="en" >    
     <head>
         <meta charset="utf-8">
-        <title>${page_title}</title>
+        <title>${page_title}</title>        
     </head>
     <body>
-        <div>
-            <a href="/">Grouper</a>
-            <a href="/about">About</a>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>        
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>  
+        <link rel="stylesheet" href="common/grouper.css"/>                  
+        <div class="navbar navbar-default" role="navigation">
+             <ul class="nav navbar-nav">
+                <li><a href="/">Grouper</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
         </div>
+        <style>
+            .nav.navbar-nav > li > a:hover {
+                background: gray !important; 
+                color:white !important;
+                border-radius: 3px !important;
+            }
+        </style>
 
-        <div metal:define-slot="content"></div>
+        <div metal:define-slot="content"></div>        
+        <script src="common/feedback.js"></script>      
     </body>
 </html>
