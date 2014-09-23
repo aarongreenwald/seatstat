@@ -2,7 +2,9 @@
 <html metal:define-macro="layout" lang="en" >    
     <head>
         <meta charset="utf-8">
-        <title>${page_title}</title>        
+        <title>${page_title}</title>  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Grouper helps teachers seat their students around tables while keeping problem students apart from one another.">      
     </head>
     <body>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>        
