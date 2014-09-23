@@ -19,16 +19,15 @@
             <span ng-show="home.evenDivision()">{{(home.members.length - 1) / home.groupSize}} </span>
              groups of 
                 <input class="group-size" min="1" ng-model="home.groupSize" type="number"/>  each.
-            <div ng-show="!home.evenDivision()">You can't divide {{home.members.length - 1}} by {{home.groupSize}} evenly, so you need to decide what to do 
-            with the extra students. You can: 
-                <ul>
-                    <li>Have {{((home.members.length - 1) / home.groupSize) + 1}} tables, with <!--the groupsize less the remainder is what's missing from that number of tables--></li>
-                    <li>Have {{((home.members.length - 1) / home.groupSize)}} tables, with <!--the the remainder is what's extra, one on each of that number of tables--></li>
+            <div ng-show="!home.evenDivision()">You can't divide {{home.members.length - 1}} by {{home.groupSize}} evenly, so you 
+            will have one table with only {{(home.members.length - 1) % home.groupSize}} student(s).
+                
+                    
                     <!--there are two main configurations: an extra table or not, with an extra table, one
                     table will be short, without, one table will have extra. The overage can be left on one table
                     or spread as evenly as possible. Same for the short. Easier is to make an assumption about spreading 
                     evenly, ask if they want more or less, or 'another configuration', which will be entirely customizable. -->                    
-                </ul>
+                
             </div>
                 
         </div>
