@@ -11,12 +11,11 @@ into teams or really anything. (Although the front-end is built with seating stu
 Getting Started
 ---------------
 
-Clone this repository and cd to the directory containing this file. Then:
+Clone this repository and cd to the ./grouper directory (relative to this file). Then:
 
 - mkdir ../env
 - virtualenv ../env
 - ../env/bin/python setup.py develop
-- ../env/bin/initialize_grouper_db development.ini
 - ../env/bin/pserve development.ini
 
 Have fun!
