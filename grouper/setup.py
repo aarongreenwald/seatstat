@@ -5,8 +5,6 @@ from setuptools import setup, find_packages
 here = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(here, 'README.txt')) as f:
     README = f.read()
-with open(os.path.join(here, 'CHANGES.txt')) as f:
-    CHANGES = f.read()
 
 requires = [
     'pyramid',
@@ -21,19 +19,18 @@ requires = [
     ]
 
 setup(name='grouper',
-      version='0.0',
-      description='grouper',
-      long_description=README + '\n\n' + CHANGES,
+      version='0.1',
+      description='grouper is a web api for dividing groups of items into smaller groups while honoring constraints',
+      long_description=README,
       classifiers=[
         "Programming Language :: Python",
         "Framework :: Pyramid",
-        "Topic :: Internet :: WWW/HTTP",
-        "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+        "Topic :: Web Application :: Web API",
+        "Intended Audience :: School Teachers",
         ],
       author='Aaron Greenwald',
       author_email='aaron@aarongreenwald.com',
-      url='http://www.aarongreenwald.com',
-      keywords='web wsgi bfg pylons pyramid',
+      url='www.aarongreenwald.com',      
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
@@ -42,7 +39,5 @@ setup(name='grouper',
       entry_points="""\
       [paste.app_factory]
       main = grouper:main
-      [console_scripts]
-      initialize_grouper_db = grouper.scripts.initializedb:main
       """,
       )
