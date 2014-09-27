@@ -11,9 +11,10 @@
             <div ng-repeat="member in home.members" class="member-name">
                 <span class="member-name" >
                     <input class="member-name" ng-model="member.name" 
-                        ng-change="home.memberChange($index)" ng-blur="home.memberBlur($index)"/>
-                </span>
-            </div>
+                        ng-change="home.memberChange($index)" ng-blur="home.memberBlur($index)"
+                        ng-class="{'duplicate': home.duplicateMember(member)}"/>
+                </span>                
+            </div>            
         </div>        
         <div class="row">
             Divide {{home.members.length - 1}} students into
@@ -37,24 +38,24 @@
         <div class="step-header">Restrictions</div>
         <div class="row">
             <div class="col-sm-6">                            
-                <table ng-show="home.illegalPairs.length">
+                <table ng-show="home.restrictions.length">
                     <tbody>
-                        <tr ng-repeat="pair in home.illegalPairs" >
+                        <tr ng-repeat="pair in home.restrictions" >
                             <td class="pair-item"><div>{{pair[0]}}</div></td>                            
                             <td class="pair-item"><div ng-show="pair[1].length">{{pair[1]}}</div></td>
-                            <td><span ng-click="home.removeIllegalPair($index)" title="Remove" class="glyphicon glyphicon-remove icon-button"/></td>
+                            <td><span ng-click="home.removeRestriction($index)" title="Remove" class="glyphicon glyphicon-remove icon-button"/></td>
                         </tr>
                     </tbody>
                 </table>
-                <div ng-show="!home.illegalPairs.length">
+                <div ng-show="!home.restrictions.length">
                     You have no restrictions on placement. Start by clicking on the names on the right to add
                     pairs  of students that cannot sit together.
                 </div>                                
             </div> 
             <div class="col-sm-6">                
-                <div ng-repeat="member in home.members" ng-click="home.addToIllegalPair(member)" 
-                    class="illegal-pair-member"
-                    ng-class="{'invalid': !home.validInIllegalPair(member)}">{{member.name}}</div>                
+                <div ng-repeat="member in home.members" ng-click="home.addToRestriction(member)" 
+                    class="restriction-member"
+                    ng-class="{'invalid': !home.validInRestriction(member)}">{{member.name}}</div>                
             </div>
         </div>
     </div>
@@ -87,6 +88,9 @@
     span.member-name {
         padding:5px;        
         float:left;
+    }
+    input.member-name.duplicate {
+        border-color: red !important;
     }
     input {
         border-radius: 3px;
@@ -134,22 +138,22 @@
     .icon-button:hover{
         opacity:.9;
     }
-    .illegal-pair-member{
+    .restriction-member{
         padding:5px;
         float:right;
         width:150px;               
     }
     
    @media only screen and (min-device-width : 768px) {
-        .illegal-pair-member{
+        .restriction-member{
             float:left !important;
         }    
     }
-     .illegal-pair-member:not(.invalid):hover{
+     .restriction-member:not(.invalid):hover{
         cursor:pointer; 
         color:blue;        
     }
-    .illegal-pair-member.invalid{
+    .restriction-member.invalid{
         opacity:.3;
     }
     

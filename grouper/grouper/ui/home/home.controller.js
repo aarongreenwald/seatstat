@@ -1,64 +1,64 @@
 grouper.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
     $scope.home = new function(){
-        var private = {
+        var utilities = {
             generateGroups: function(){ 
                 $http({method: 'GET', url: 'api/groups', params: {
-                        members: _.reject(_.pluck(public.members, 'name'), function(member) { return !member }),
-                        illegalPairs: _.reject(public.illegalPairs, function(pair) { return !pair[0] || !pair[1]}),
-                        groupSize: public.groupSize             
+                        members: _.reject(_.pluck(api.members, 'name'), function(member) { return !member }),
+                        restrictions: _.reject(api.restrictions, function(pair) { return !pair[0] || !pair[1]}),
+                        groupSize: api.groupSize             
                     }
                 })
                 .success(function(data){
-                    public.groups = data
+                    api.groups = data
                     $window.localStorage.setItem('grouper', angular.toJson({
-                        members: public.members,
-                        illegalPairs: public.illegalPairs,
-                        groupSize: public.groupSize
+                        members: api.members,
+                        restrictions: api.restrictions,
+                        groupSize: api.groupSize
                     }))
                 })
             }
         }
         
-        var public = {          
+        var api = {          
             generateGroups: function(){                
-                private.generateGroups()
+                utilities.generateGroups()
                 this.step = 2
             } ,
                        
             step: 0,
             members: [{name: ''}],
-            illegalPairs: [],
+            restrictions: [],
             groupSize: 5,
             
             evenDivision: function(){
                 return (this.members.length  - 1) % this.groupSize === 0
             },
             
-            addToIllegalPair: function(member){    
-                if (!public.validInIllegalPair(member)){
+            addToRestriction: function(member){    
+                if (!api.validInRestriction(member)){
                     return
                 }            
-                if (this.illegalPairs.length > 0 && this.illegalPairs[this.illegalPairs.length - 1].length === 1){
-                    this.illegalPairs[this.illegalPairs.length - 1].push(member.name)
+                if (this.restrictions.length > 0 && this.restrictions[this.restrictions.length - 1].length === 1){
+                    this.restrictions[this.restrictions.length - 1].push(member.name)
                 }
                 else {
-                    this.illegalPairs.push([member.name])
+                    this.restrictions.push([member.name])
                 }
             },
             
-            removeIllegalPair: function(index){
-                this.illegalPairs.splice(index, 1)
+            removeRestriction: function(index){
+                this.restrictions.splice(index, 1)
             },
             
             midPair: function(){
-                return this.illegalPairs.length && this.illegalPairs[this.illegalPairs.length - 1].length < 2
+                return this.restrictions.length && this.restrictions[this.restrictions.length - 1].length < 2
             },
             
-            validInIllegalPair: function(member){
-                if (public.midPair()){                                    
-                    for (var i in this.illegalPairs){
-                        if (this.illegalPairs[i].indexOf(member.name) !== -1 &&
-                            this.illegalPairs[i].indexOf(this.illegalPairs[this.illegalPairs.length - 1][0]) !== -1){
+            validInRestriction: function(member){
+                if (api.midPair()){                                    
+                    for (var i in this.restrictions){
+                        if (this.restrictions[i].indexOf(member.name) !== -1 &&
+                            this.restrictions[i].indexOf(this.restrictions[this.restrictions.length - 1][0]) !== -1){
                             return false
                         }
                     }
@@ -81,11 +81,15 @@ grouper.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($sco
                 if (this.members[index].name.trim() === '' && index !== this.members.length - 1){
                     this.members.splice(index, 1)
                 }
+            },
+            
+            duplicateMember: function(member){
+                return _.where(this.members, {name : member.name}).length > 1
             }
             
         }
              
-        _.extend(public, JSON.parse($window.localStorage.getItem('grouper')))
-        return public
+        _.extend(api, JSON.parse($window.localStorage.getItem('grouper')))
+        return api
     }
 }])
