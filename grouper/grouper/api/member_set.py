@@ -1,4 +1,5 @@
 import math
+from ..infrastructure import grouper_exception
 
 class MemberSet:
     #todo: this class should not contain the grouping logic. it should 
@@ -27,7 +28,6 @@ class MemberSet:
             if pair[0] in group:
                 return pair[1]
     """
-
 
     def distribute_illegal_pairs(self):     
         for pair in self.illegal_pairs:         
@@ -68,9 +68,18 @@ class MemberSet:
         return self.groups
         
     def __init__(self, members, group_size, illegal_pairs):
+        if group_size < 2:
+            raise grouper_exception.GrouperException('The group size must be at least two, or grouping is meaningless.')
+            
+        if len(members) < 3:
+            raise grouper_exception.GrouperException('There must be at least three members for grouping to be meaningful.')
+            
+        if group_size >= len(members):
+            raise grouper_exception.GrouperException('The group size must be smaller than the total number of members for grouping to be meaningful.')
+            
         self.members = members
         self.group_size = group_size
-        self.illegal_pairs = illegal_pairs
+        self.illegal_pairs = illegal_pairs        
 
         self.member_count = len(self.members)
         self.group_count = int(math.ceil(self.member_count / float(self.group_size)))
