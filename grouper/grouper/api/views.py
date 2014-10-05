@@ -18,7 +18,7 @@ def groups(request):
     for i in range(0, len(names)):
         members += [Member(names[i])]
 
-    illegal_pairs_names = request.params.getall('illegalPairs')
+    illegal_pairs_names = request.params.getall('restrictions')
         
     illegal_pairs = []
     for pair_str in illegal_pairs_names:        
