@@ -1,4 +1,4 @@
-grouper.controller('HeaderCtrl', ['$scope', '$window', '$timeout', function($scope, $window, $timeout){
+seatstat.controller('HeaderCtrl', ['$scope', '$window', '$timeout', function($scope, $window, $timeout){
     $scope.header = new function(){
         //every time the message is changed, the user's previous 'Don't show this again'
         //selection is made irrelevant by updating the bannerMessageId value.
@@ -19,7 +19,7 @@ grouper.controller('HeaderCtrl', ['$scope', '$window', '$timeout', function($sco
                 return hash
             },
             initialize: function(){                
-                if ($window.localStorage['grouper.header.hideBanner.'  + bannerMessageId.toString()] !== "true"){                                        
+                if ($window.localStorage['seatstat.header.hideBanner.'  + bannerMessageId.toString()] !== "true"){                                        
                     $timeout(function(){
                         api.showBannerMessage = true    
                     }, 1000)
@@ -32,7 +32,7 @@ grouper.controller('HeaderCtrl', ['$scope', '$window', '$timeout', function($sco
             hideBannerMessage: function(permanent){
                 this.showBannerMessage = false
                 if (permanent){
-                    $window.localStorage['grouper.header.hideBanner.' + bannerMessageId.toString()] = "true"
+                    $window.localStorage['seatstat.header.hideBanner.' + bannerMessageId.toString()] = "true"
                 }
             }
         }
