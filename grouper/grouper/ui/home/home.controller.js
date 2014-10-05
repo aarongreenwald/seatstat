@@ -1,4 +1,4 @@
-grouper.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
+seatstat.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
     $scope.home = new function(){
         var utilities = {
             generateGroups: function(){ 
@@ -10,7 +10,7 @@ grouper.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($sco
                 })
                 .success(function(data){
                     api.groups = data
-                    $window.localStorage.setItem('grouper', angular.toJson({
+                    $window.localStorage.setItem('seatstat', angular.toJson({
                         members: api.members,
                         restrictions: api.restrictions,
                         groupSize: api.groupSize
@@ -89,7 +89,7 @@ grouper.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($sco
             
         }
              
-        _.extend(api, JSON.parse($window.localStorage.getItem('grouper')))
+        _.extend(api, JSON.parse($window.localStorage.getItem('seatstat')))
         return api
     }
 }])

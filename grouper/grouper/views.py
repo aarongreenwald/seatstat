@@ -7,10 +7,10 @@ def layout():
     return layout
 
 
-@view_config(renderer="ui/grouper.pt", route_name="app")
+@view_config(renderer="ui/seatstat.pt", route_name="app")
 def index_view(request):
     return {"layout": layout(),
-            "page_title": "Grouper"}
+            "page_title": "SeatStat"}
 
 
 @view_config(renderer="ui/about.pt", route_name="about")
