@@ -1,0 +1,6 @@
+<div metal:use-macro="layout">
+    <div metal:fill-slot="content">        
+        <div class="home-get-started">Get Started</div>
+        <span>It's free, no sign-up required</span>
+    </div>
+</div>
