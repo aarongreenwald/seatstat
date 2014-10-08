@@ -9,7 +9,7 @@ seatstat.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('header', {
       url: "/",
-      templateUrl: "header/header.html"      
+      templateUrl: "app/header/header.html"      
     })
 })
 
