@@ -19,11 +19,11 @@ def main(global_config, **settings):
     api.models.Base.metadata.bind = engine
         
     #for the main entry point to the SPA
-    config.add_route('app', '/') 
+    config.add_route('app', '/app') 
     #pages that aren't part of the spa are rendered server side, 
     #mostly for SEO purposes
     config.add_route('about', '/about') 
-    config.add_route('home', '/home') 
+    config.add_route('home', '/') 
     
     #api routes
     config.add_route('groups', '/api/groups')    
