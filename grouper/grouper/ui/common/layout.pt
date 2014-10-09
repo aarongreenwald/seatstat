@@ -10,18 +10,14 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>        
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>  
-        <link rel="stylesheet" href="common/seatstat.css"/>                  
+        <link rel="stylesheet" href="common/seatstat.css"/>               
         <div id="container">
-            <div class="navbar" role="navigation">
-                 <ul class="nav navbar-nav">
-                    <li><a href="/">SeatStat</a></li>
-                    <li><a href="/about">About</a></li>
-                </ul>
-            </div>   
+            <a href="/" class="ss-logo">SeatStat</a>            
             <div id="content">
                 <div metal:define-slot="content"></div>        
             </div>
             <footer>                
+                <a href="/about">About</a>
                 <a href="http://seatstat.uservoice.com">Feedback</a>            
                 <a href="http://www.aarongreenwald.com">Developer</a>
                 <a href="http://github.com/aarongreenwald/grouper">Github</a>
@@ -30,19 +26,16 @@
         </div>
         <script src="common/feedback.js"></script>      
         <style>
-            .navbar-nav {
-                margin:0;
+            @font-face {
+                  font-family: 'Bubblegum Sans';                  
+                  src: url("lib/font/BubblegumSans-Regular.otf") format("opentype");
             }
-            .navbar-nav > li {
-                float:left; /*I want to float:left even if the screen is smaller than 768, which is what bootstrap does */                
-            }
-            .nav.navbar-nav > li > a {                
-                color:gray;                
-            }
-            .nav.navbar-nav > li > a:hover {
-                background: gray !important; 
-                color:white !important;
-                border-radius: 3px !important;
+           a.ss-logo{
+                text-decoration:none;
+                font-size:28pt;
+                padding:25px;
+                font-family: "Bubblegum Sans";
+                color:#444;
             }
             html, body {
                 height:100%;
