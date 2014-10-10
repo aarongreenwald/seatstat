@@ -1,7 +1,7 @@
 <div metal:use-macro="layout">
     <div metal:fill-slot="content">
     <div class="container">
-        <div>
+        <div class="ss-home-intro">
             <div>
                 SeatStat is the straightforward classroom seating plan assistant. 
                 It's free to use, no sign-up required.
@@ -14,7 +14,12 @@
             </div>
                         
         </div>
-        <p>        
+        <div class="ss-home-intro-details">
+            <a href="/#details">Learn more</a>            
+        </div>
+        <hr />
+        <a name="details"></a>
+        <p>                
         It's a new year and it's time to figure out where your kids will sit in the classroom.
         No big deal, just assign them each to a table and start teaching. 
         Yeah, right.         
@@ -63,6 +68,14 @@
     
 </div>        
 <style>
+    div.ss-home-intro{
+        height: calc(95vh - 70px);        
+    }
+    div.ss-home-intro-details{
+        height:5vh;
+        text-align:center;
+        vertical-align:bottom;
+    }
     div.home-get-started{
         background: rgb(73, 73, 250);
         width:150px;
