@@ -15,7 +15,7 @@
                 <a onclick="learnMore()">Learn more</a>                            
             </div>
         </div>
-        <div class="ss-home-details" style="display:none">
+        <div class="ss-home-details">
             <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
@@ -114,4 +114,7 @@
         $(".ss-home-intro-details").slideUp()
         $(".ss-home-details").show()
     }
+    $(document).ready(function(){
+        $(".ss-home-details").hide()
+    })
 </script>
