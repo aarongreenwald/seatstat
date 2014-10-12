@@ -18,13 +18,14 @@ def main(global_config, **settings):
     api.models.DBSession.configure(bind=engine)
     api.models.Base.metadata.bind = engine
         
-     #for the main entry point to the SPA
-    config.add_route('app', '/') 
-    #pages that aren't part of the spa are rendered server side, mostly 
-    #for SEO purposes
+    #for the main entry point to the SPA
+    config.add_route('app', '/app') 
+    #pages that aren't part of the spa are rendered server side, 
+    #mostly for SEO purposes
     config.add_route('about', '/about') 
+    config.add_route('home', '/') 
     
-    #routes
+    #api routes
     config.add_route('groups', '/api/groups')    
 
     #this sets up the ui folder to be served from the root, so things like /common/...js work    

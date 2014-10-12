@@ -6,9 +6,8 @@ def layout():
     layout = renderer.implementation().macros['layout']
     return layout
 
-
-@view_config(renderer="ui/seatstat.pt", route_name="app")
-def index_view(request):
+@view_config(renderer="ui/app/seatstat.pt", route_name="app")
+def app_view(request):    
     return {"layout": layout(),
             "page_title": "SeatStat"}
 
@@ -18,3 +17,7 @@ def about_view(request):
     return {"layout": layout(),
             "page_title": "About SeatStat"}
 
+@view_config(renderer="ui/home.pt", route_name="home")
+def home_view(request):
+    return {"layout": layout(),
+            "page_title": "SeatStat"}

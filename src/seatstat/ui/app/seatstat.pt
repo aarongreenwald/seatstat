@@ -7,11 +7,11 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
         
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-        <script src="common/lib/angular-ui/angular-ui-router.min.js"></script>        
+        <script src="lib/angular-ui/angular-ui-router.min.js"></script>        
 
-        <script src="common/seatstat.js"></script>
+        <script src="/app/seatstat.js"></script>
 
-        <script src="home/home.controller.js"></script>
-        <script src="header/header.controller.js"></script>        
+        <script src="/app/home/home.controller.js"></script>
+        <script src="/app/header/header.controller.js"></script>        
     </div>
 </div>
