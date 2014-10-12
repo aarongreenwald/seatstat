@@ -18,9 +18,9 @@ requires = [
     'psycopg2',
     ]
 
-setup(name='grouper',
+setup(name='seatstat',
       version='0.1',
-      description='grouper is a web api for dividing groups of items into smaller groups while honoring constraints',
+      description='SeatStat is a web application that helps teachers seat students around tables in a classroom.',
       long_description=README,
       classifiers=[
         "Programming Language :: Python",
@@ -34,10 +34,10 @@ setup(name='grouper',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
-      test_suite='grouper',
+      test_suite='seatstat',
       install_requires=requires,
       entry_points="""\
       [paste.app_factory]
-      main = grouper:main
+      main = seatstat:main
       """,
       )
