@@ -19,7 +19,7 @@ Frontend: AngularJS
 Getting Started
 ---------------
 
-Clone this repository and cd to the ./grouper directory (relative to this file). Then:
+Clone this repository and cd to the ./seatstat directory (relative to this file). Then:
 
 - mkdir ../env
 - virtualenv ../env
