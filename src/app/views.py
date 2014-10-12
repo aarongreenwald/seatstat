@@ -16,5 +16,5 @@ def index_view(request):
 @view_config(renderer="ui/about.pt", route_name="about")
 def about_view(request):
     return {"layout": layout(),
-            "page_title": "About Grouper"}
+            "page_title": "About SeatStat"}
 
