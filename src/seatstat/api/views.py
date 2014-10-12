@@ -28,8 +28,4 @@ def groups(request):
     member_set = MemberSet(members, group_size, illegal_pairs)    
    
     return member_set.groupify()   
-    
-@view_config(context=Exception)
-def error_view(exception, request):        
-    message = str(exception) if isinstance(exception, grouper_exception.GrouperException) else 'An error occurred.'
-    return Response(message, 500)
+

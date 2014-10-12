@@ -1,3 +1,5 @@
+/src/.~lock.user_access.csv#
+/src/user_access.csv
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
