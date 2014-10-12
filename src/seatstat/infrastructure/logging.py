@@ -10,7 +10,7 @@ def log_user_access(event):
     if (request.path[-4:] != '.css' 
             and request.path[-3:] != '.js'
             and request.path[-4:] != '.otf'):
-        user_access = UserAccess(request.remote_addr, request.method, request.path, request.query_string, request.body) #client_addr?
+        user_access = UserAccess(request.client_addr, request.method, request.path, request.query_string, request.body) #client_addr?
         user_access.csvlog() #remove this once the db is set up
         #DBSession.add(user_access)
         #transaction.commit()
