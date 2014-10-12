@@ -1,0 +1,26 @@
+<div metal:use-macro="layout">
+    <div metal:fill-slot="content">
+        <div class="col-md-3"></div>
+        <div class="container col-md-6">
+            <p>
+                Welcome to SeatStat, the classroom seating solution. 
+                This app is under construction and is not really ready for public consumption.
+                Both the layout and content are subject to change dramatically and without notice,
+                and the accuracy of the results is not guaranteed.                 
+                Please manually verify any results before relying on them.                                
+            </p>
+            <p>
+                I'm still not sure exactly what this thing will do when it finally does things.
+                Your feedback and suggestions are welcome. 
+                Please use the little lightbulb on the bottom
+                of the page to submit feedback or suggest features for SeatStat
+                so that others can see what's planned and vote on features. 
+                You can also <a href="mailto:support@seatstat.com">email me</a> directly if you'd like.
+                                
+            </p>
+            <p>
+                
+            </p>
+        </div>
+    </div>
+</div>
