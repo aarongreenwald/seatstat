@@ -1,3 +1,14 @@
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+    var learnMore = function(){
+        $(".ss-home-intro").slideUp()
+        $(".ss-home-intro-details").slideUp()
+        $(".ss-home-details").show()
+    }
+    $(document).ready(function(){
+        $(".ss-home-details").hide()
+    })
+</script>
 <div metal:use-macro="layout">
     <div metal:fill-slot="content" class="container">
         <div>
@@ -7,7 +18,7 @@
                     Tired of spending hours trying to create a workable seating plan for your classroom? 
                     SeatStat figures out where your students should sit. It's free to use, no signup required.                                
                 </div>
-                <div class="col-sm-2" style="padding-top:20px;">                                                
+                <div class="col-sm-6" style="padding-top:20px;">                                                
                     <a class="home-get-started" href="/app">Get Started</a>                                
                 </div>
             </div>
@@ -107,14 +118,4 @@
         padding:10px;
     }
 </style>
-<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-<script>
-    var learnMore = function(){
-        $(".ss-home-intro").slideUp()
-        $(".ss-home-intro-details").slideUp()
-        $(".ss-home-details").show()
-    }
-    $(document).ready(function(){
-        $(".ss-home-details").hide()
-    })
-</script>
+
