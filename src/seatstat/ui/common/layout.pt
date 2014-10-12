@@ -3,8 +3,10 @@
     <head>
         <meta charset="utf-8">
         <title>${page_title}</title>  
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="SeatStat helps teachers seat their students around tables while keeping problem students apart from one another.">      
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <meta name="keywords" content="teachers, seating chart, classroom, generator">
+        <meta name="author" content="Aaron Greenwald">
+        <meta name="description" content="Tired of spending hours trying to create a workable seating plan for your classroom? SeatStat figures out where your students should sit. It's free, no signup required.">      
     </head>
     <body>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>        

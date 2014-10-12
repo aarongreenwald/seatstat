@@ -1,82 +1,87 @@
 <div metal:use-macro="layout">
     <div metal:fill-slot="content" class="container">
-    <div>
-        <div class="ss-home-intro">
-            <div>
-                SeatStat is the straightforward classroom seating plan assistant. 
-                It's free to use, no sign-up required.
-            </div>
-            <div class="row">
-                <div class="col-xs-5"></div>
-                    <div class="home-get-started col-xs-1">        
-                        <a class="home-get-started" href="/app">Get Started</a>            
-                    </div>
-                </div>                        
+        <div>
+            <div class="row ss-home-intro">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">                    
+                    Tired of spending hours trying to create a workable seating plan for your classroom? 
+                    SeatStat figures out where your students should sit. It's free to use, no signup required.                                
+                </div>
+                <div class="col-sm-2" style="padding-top:20px;">                                                
+                    <a class="home-get-started" href="/app">Get Started</a>                                
+                </div>
             </div>
             <div class="ss-home-intro-details">
-                <a onclick="learnMore()">Learn more</a>            
-                <hr />
+                <a onclick="learnMore()">Learn more</a>                            
             </div>
         </div>
         <div class="ss-home-details" style="display:none">
+            <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
             <p>                
             It's a new year and it's time to figure out where your kids will sit in the classroom.
             No big deal, just assign them each to a table and start teaching. 
-            Yeah, right.         
-            Tim thinks it's funny to pull Jenny's hair, 
-            Oscar and Tanisha don't listen to a thing you say when they're at the same table,
-            and Molly and Holly like to fight over whose name sounds better. 
+            Should be easy, right? 
             </p>
             <p>
-            So you separate them and get back to teaching. For a short while, anyway. As the year progresses, 
-            more problems arise and seating your students becomes increasing complicated. 
+            If only. Tim thinks it's funny to pull Jenny's hair, 
+            Oscar and Tanisha don't listen to a thing you say when they're at the same table,
+            and Molly and Holly like to fight over whose name sounds better (Molly's, obviously). 
+            </p>
+            <p>
+            So you separate them and get back to teaching. But as the year progresses, 
+            more problems arise and seating your students becomes increasingly complicated. 
             You spend hours moving around post-it notes on a table trying to 
             find a setup that works for everyone and you start to wonder why you became a teacher after all.
             It wasn't so that you can do this.
             </p>
             <p>
-            Now you don't need to. SeatStat will automagically (that's a real word) figure out where everyone should sit.
+            Now you don't have to. SeatStat will analyze your requirements and automagically (that's a real word) 
+            generate an acceptable seating plan for your classroom.
             Here's how it works:
             </p>
             <p>
             <ol>
             <li>Type in the names of your students. (SeatStat is magic, but not magical enough to divine their names.)</li>
             <li>Specify pairs of students that can't sit at the same table as one another. 
-                Coming soon: specify pairs of students that should sit together</li>
-            <li>Click 'Next' and you're done! SeatStat finds a seating chart that works for your class.</li>        
+                <span class="ss-home-coming-soon">Coming soon: specify pairs of students that should sit together</span></li>
+            <li>Click 'Next' and you're done! SeatStat generates a seating chart that works for your class.</li>        
             </ol>
             </p>
             <p>
-            SeatStat will remember what you typed in for next time, so you want have to do it all again if 
+            SeatStat will remember your class for next time, so you want have to do it all again if 
             you need to add a new set of problem kids and generate a new seating chart. 
-            </p>        
-             <div class="row">
-                <div class="col-xs-5"></div>
-                    <div class="home-get-started col-xs-1">        
-                        <a class="home-get-started" href="/app">Get Started</a>            
-                    </div>
-                </div>        
-            
-            <div class="row">
-                <div class="col-xs-5"></div>
-                    <div class="col-xs-2">        
-                        or <a href="/about">read more about SeatStat</a>
-                    </div>
-                </div>        
+            </p>  
             </div>
+            </div>      
+            <div class="center">            
+                <a class="home-get-started" href="/app">Get Started</a>                                
+            </div>        
+            
+           
+            <div class="center">        
+                or <a href="/about">read more about SeatStat</a>
+            </div>
+            </div>
+   
+           
         </div>    
-   </div>
+    </div>
     
 <style>
+    body{
+        
+    }
     div.ss-home-intro{
-        height: calc(95vh - 70px);        
+        height: calc(95vh - 110px);        
     }
     div.ss-home-intro-details{
         height:5vh;
         text-align:center;
         vertical-align:bottom;
     }  
-    div.home-get-started{
+    a.home-get-started{
         background: rgb(73, 73, 250);
         width:150px;
         text-align:center;
@@ -87,14 +92,19 @@
         text-decoration:none;
         color:#fff;
         cursor:pointer;     
-    }
-    a.home-get-started{
-        color:#fff;
-    }
+    }  
     .home-get-started:hover{
         color:#fff;
         text-decoration:none;
         opacity:.8;
+    }
+    span.ss-home-coming-soon{
+        font-style:italic;
+    }
+    div.center{
+        text-align:center;
+        width:100%;
+        padding:10px;
     }
 </style>
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
