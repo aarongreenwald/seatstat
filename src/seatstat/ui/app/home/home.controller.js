@@ -5,16 +5,18 @@ seatstat.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($sc
                 $http({method: 'GET', url: 'api/groups', params: {
                         members: _.reject(_.pluck(api.members, 'name'), function(member) { return !member }),
                         restrictions: _.reject(api.restrictions, function(pair) { return !pair[0] || !pair[1]}),
-                        groupSize: api.groupSize             
+                        group_sizes: _.pluck(api.groupSizes, 'size')
                     }
                 })
                 .success(function(data){
-                    api.groups = data
+                    api.groups = data                   
+                })
+                .finally(function(){
                     $window.localStorage.setItem('seatstat', angular.toJson({
                         members: api.members,
                         restrictions: api.restrictions,
-                        groupSize: api.groupSize
-                    }))
+                        group_sizes: api.groupSizes
+                    }))    
                 })
             }
         }
@@ -22,16 +24,20 @@ seatstat.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($sc
         var api = {          
             generateGroups: function(){                
                 utilities.generateGroups()
-                this.step = 2
+                this.step = 3
             } ,
                        
             step: 0,
             members: [{name: ''}],
-            restrictions: [],
-            groupSize: 5,
-            
-            evenDivision: function(){
-                return (this.members.length  - 1) % this.groupSize === 0
+            restrictions: [],            
+            groupSizes: [],
+                        
+            groupCountChanged: function(){
+                var groupSizes = []
+                for (var i = 0; i < api.groupCount; i++){
+                    groupSizes.push({size: Math.floor(api.members.length / api.groupCount)})
+                }
+                api.groupSizes = groupSizes                
             },
             
             addToRestriction: function(member){    

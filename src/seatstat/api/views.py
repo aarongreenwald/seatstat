@@ -12,20 +12,23 @@ import pyramid
 def groups(request):    
         
     names = request.params.getall('members')    
-    group_size = int(request.params['groupSize'])
+    group_sizes = request.params.getall('group_sizes')    
 
     members = []    
     for i in range(0, len(names)):
         members += [Member(names[i])]
 
-    illegal_pairs_names = request.params.getall('restrictions')
+    groups = []
+    for i in range(0, len(group_sizes)):
+        groups += [int(group_sizes[i])]
+            
+    restriction_names = request.params.getall('restrictions')
         
-    illegal_pairs = []
-    for pair_str in illegal_pairs_names:        
-        pair = json.loads(pair_str)               
-        illegal_pairs += [[Member(pair[0]), Member(pair[1])]]
+    restrictions = []
+    for restriction_str in restriction_names:        
+        restriction = json.loads(restriction_str)               
+        restrictions += [[Member(restriction[0]), Member(restriction[1])]]
      
-    member_set = MemberSet(members, group_size, illegal_pairs)    
+    member_set = MemberSet(members, groups, restrictions)    
    
     return member_set.groupify()   
-
