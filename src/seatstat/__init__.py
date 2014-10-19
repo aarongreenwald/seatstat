@@ -11,9 +11,6 @@ def main(global_config, **settings):
     config = Configurator(settings=settings)
     config.include('pyramid_chameleon')        
     
-    #why is this firing twice for every request?
-    config.add_subscriber(logging.log_user_access, NewRequest)
-    
     engine = engine_from_config(settings, 'sqlalchemy.')    
     api.models.DBSession.configure(bind=engine)
     api.models.Base.metadata.bind = engine

@@ -12,8 +12,8 @@ honoring restrictions on which items can be in the same group with another.
 An attempt is being made to keep the backend implementation-agnostic, while the front-end is focused on teachers 
 seating children around tables in a classroom.
 
-Backend: Python (Pyramid)
-Frontend: AngularJS
+- Backend: Python (Pyramid)
+- Frontend: AngularJS
 
 
 Getting Started
