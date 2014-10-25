@@ -6,6 +6,7 @@ from member_set import *
 from member import *
 
 import json
+import random
 import pyramid
 
 @view_config(route_name='groups', renderer='json') #using the json renderer double escapes the strings
@@ -22,12 +23,17 @@ def groups(request):
     for i in range(0, len(group_sizes)):
         groups += [int(group_sizes[i])]
             
-    restriction_names = request.params.getall('restrictions')
-        
+    restriction_names = request.params.getall('restrictions')    
+            
     restrictions = []
     for restriction_str in restriction_names:        
         restriction = json.loads(restriction_str)               
         restrictions += [[Member(restriction[0]), Member(restriction[1])]]
+     
+    randomize = request.params['randomize'] == 'true'
+    if randomize:
+        random.shuffle(members)
+        random.shuffle(restrictions)
      
     member_set = MemberSet(members, groups, restrictions)    
    

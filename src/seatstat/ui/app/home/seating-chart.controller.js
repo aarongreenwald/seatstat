@@ -2,11 +2,12 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
     
         $scope.home.seatingChart = new function(){
             var utilities = {
-                generate: function(){ 
+                generate: function(randomize){ 
                     $http({method: 'GET', url: 'api/groups', params: {
                             members: _.reject(_.pluck($class.students, 'name'), function(student) { return !student }),
                             restrictions: _.reject($class.restrictions, function(pair) { return !pair[0] || !pair[1]}),
-                            group_sizes: _.pluck($class.tableSizes, 'size')
+                            group_sizes: _.pluck($class.tableSizes, 'size'),
+                            randomize: !!randomize
                         }
                     })
                     .success(function(data){
@@ -28,7 +29,9 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
             }
             
             var api = {
-                seatingChart : $class.seatingChart
+                shuffle: function(){
+                    utilities.generate(true)
+                }                
             }
             
             utilities.initialize()
