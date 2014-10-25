@@ -7,4 +7,20 @@
             </div> 
         </div>
     </div>        
+    <div class="row no-print home-seating-chart-shuffled" ng-if="home.seatingChart.shuffled">
+        <div class="col-xs-12">
+            This seating chart has been shuffled, so SeatStat will not remember
+            it if you leave and come back. Please 
+            <a ng-click="home.seatingChart.print()">print this page</a>
+            before navigating away from the seating chart.
+        </div>
+    </div> 
 </div>
+<style>
+    .home-seating-chart-shuffled{
+        border:1px solid rgba(255, 0, 0, 0.34);
+        background: pink;
+        border-radius:5px;
+        padding:15px;
+    }
+</style>
