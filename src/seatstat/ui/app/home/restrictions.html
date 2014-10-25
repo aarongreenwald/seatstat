@@ -1,0 +1,25 @@
+<div ng-controller="RestrictionsCtrl">
+    <div class="step-header">Restrictions</div>
+    <div class="row">
+        <div class="col-sm-6">                            
+            <table ng-show="class.restrictions.length">
+                <tbody>
+                    <tr ng-repeat="pair in class.restrictions" >
+                        <td class="pair-item"><div>{{pair[0]}}</div></td>                            
+                        <td class="pair-item"><div ng-show="pair[1].length">{{pair[1]}}</div></td>
+                        <td><span ng-click="home.restrictions.removeRestriction($index)" title="Remove" class="glyphicon glyphicon-remove icon-button"/></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-show="!class.restrictions.length">
+                You have no restrictions on placement. Start by clicking on the names on the right to add
+                pairs  of students that cannot sit together.
+            </div>                                
+        </div> 
+        <div class="col-sm-6">                
+            <div ng-repeat="student in class.students" ng-click="home.restrictions.addToRestriction(student)" 
+                class="restriction-student"
+                ng-class="{'invalid': !home.restrictions.validInRestriction(student)}">{{student.name}}</div>                
+        </div>
+    </div>
+</div>

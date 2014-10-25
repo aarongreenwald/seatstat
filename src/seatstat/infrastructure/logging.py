@@ -20,4 +20,4 @@ def log_user_access(event):
 #TODO        
 def log_event(event):
     if isinstance(event, Exception):
-        print('Error')
+        print('Error', event)

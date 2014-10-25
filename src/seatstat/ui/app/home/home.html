@@ -1,78 +1,13 @@
 <div class="col-md-2"></div>
-<div ng-controller="HomeCtrl" class="container col-md-8">            
-    <div ng-if="home.step === 0">
-        <div class="step-header">Students</div>
-        
-        <div class="row" style="max-width:800px">
-            <div ng-repeat="member in home.members" class="member-name">
-                <span class="member-name" >
-                    <input class="member-name" ng-model="member.name" 
-                        ng-change="home.memberChange($index)" ng-blur="home.memberBlur($index)"
-                        ng-class="{'duplicate': home.duplicateMember(member)}"/>
-                </span>                
-            </div>            
-        </div>        
-        <div class="row">
-            Divide {{home.members.length - 1}} students into
-            <span ng-show="home.evenDivision()">{{(home.members.length - 1) / home.groupSize}} </span>
-             groups of 
-                <input class="group-size" min="1" ng-model="home.groupSize" type="number"/>  each.
-            <div ng-show="!home.evenDivision()">You can't divide {{home.members.length - 1}} by {{home.groupSize}} evenly, so you 
-            will have one table with only {{(home.members.length - 1) % home.groupSize}} student(s).
-                
-                    
-                    <!--there are two main configurations: an extra table or not, with an extra table, one
-                    table will be short, without, one table will have extra. The overage can be left on one table
-                    or spread as evenly as possible. Same for the short. Easier is to make an assumption about spreading 
-                    evenly, ask if they want more or less, or 'another configuration', which will be entirely customizable. -->                    
-                
-            </div>
-                
-        </div>
-    </div>        
-    <div ng-if="home.step === 1">
-        <div class="step-header">Restrictions</div>
-        <div class="row">
-            <div class="col-sm-6">                            
-                <table ng-show="home.restrictions.length">
-                    <tbody>
-                        <tr ng-repeat="pair in home.restrictions" >
-                            <td class="pair-item"><div>{{pair[0]}}</div></td>                            
-                            <td class="pair-item"><div ng-show="pair[1].length">{{pair[1]}}</div></td>
-                            <td><span ng-click="home.removeRestriction($index)" title="Remove" class="glyphicon glyphicon-remove icon-button"/></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div ng-show="!home.restrictions.length">
-                    You have no restrictions on placement. Start by clicking on the names on the right to add
-                    pairs  of students that cannot sit together.
-                </div>                                
-            </div> 
-            <div class="col-sm-6">                
-                <div ng-repeat="member in home.members" ng-click="home.addToRestriction(member)" 
-                    class="restriction-member"
-                    ng-class="{'invalid': !home.validInRestriction(member)}">{{member.name}}</div>                
-            </div>
-        </div>
-    </div>
-    <div ng-if="home.step === 2">
-        <div class="row">
-            <div class="col-xs-12">
-                <div ng-repeat="group in home.groups" class="group">
-                    <div class="group-header">Table {{$index + 1}} </div>
-                    <div class="group-member" ng-repeat="member in group">{{member}}</div>        
-                </div> 
-            </div>
-        </div>        
-    </div>     
+<div ng-controller="HomeCtrl" class="container col-md-8">  
+    <div ui-view></div>              
     <div class="row" style="margin-top:25px;">
         <div class="pull-left">
-            <button ng-if="home.step === 2" class="btn btn-default btn-sm" ng-click="home.step = 0">Start Over</button>  
-            <button ng-if="home.step !== 0" class="btn btn-default btn-sm" ng-click="home.step = home.step - 1">Back</button>  
+            <button ng-if="home.lastStep()" class="btn btn-default btn-sm" ng-click="home.startOver()">Start Over</button>  
+            <button ng-if="!home.firstStep()" class="btn btn-default btn-sm" ng-click="home.navigate(false)">Back</button>  
         </div>
         <div class="pull-right">
-            <button ng-if="home.step === 0" class="btn btn-default btn-sm" ng-click="home.step = home.step + 1">Next</button>                    
-            <button ng-if="home.step === 1" class="btn btn-default btn-sm" ng-click="home.generateGroups()">Next</button>                    
+            <button ng-if="!home.lastStep()" class="btn btn-default btn-sm" ng-click="home.navigate(true)">Next</button>                                
         </div>        
     </div>   
 </div>
@@ -80,21 +15,18 @@
     div.step-header{
         font-size:large;
     }
-    div.member-name{
+    div.student-name{
         margin:10px;
     }
-    span.member-name {
+    span.student-name {
         padding:5px;        
         float:left;
     }
-    input.member-name.duplicate {
+    input.student-name.duplicate {
         box-shadow: 0px 0px 3px .5px rgba(255, 0, 0, 1);
     }
    
-    input.group-size {
-        width:40px;
-    }
-    .group {
+    .table {
         float: left;
         margin: 20px;
         border: 1px solid gray;
@@ -102,14 +34,14 @@
         width: 150px;
     }
     
-    .group-header{        
+    .table-header{        
         font-weight: bold;
         border-bottom: 1px solid gray;
         background: rgba(211, 211, 211, 0.37);
         text-align: center;
         padding:4px;
     }
-    .group-member{
+    .table-student{
         margin-left:7px;
     }
     td.pair-item{     
@@ -129,22 +61,22 @@
     .icon-button:hover{
         opacity:.9;
     }
-    .restriction-member{
+    .restriction-student{
         padding:5px;
         float:right;
         width:150px;               
     }
     
    @media only screen and (min-device-width : 768px) {
-        .restriction-member{
+        .restriction-student{
             float:left !important;
         }    
-    }
-     .restriction-member:not(.invalid):hover{
+    }    
+    .restriction-student:not(.invalid):hover{
         cursor:pointer; 
         color:blue;        
     }
-    .restriction-member.invalid{
+    .restriction-student.invalid{
         opacity:.3;
     }
     

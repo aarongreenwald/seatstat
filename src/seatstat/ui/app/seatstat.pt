@@ -10,8 +10,15 @@
         <script src="lib/angular-ui/angular-ui-router.min.js"></script>        
 
         <script src="/app/seatstat.js"></script>
+        <script src="/app/seatstat.routes.js"></script>
+
+        <script src="/app/home/class.service.js"></script>
 
         <script src="/app/home/home.controller.js"></script>
+        <script src="/app/home/students.controller.js"></script>
+        <script src="/app/home/classroom.controller.js"></script>
+        <script src="/app/home/restrictions.controller.js"></script>
+        <script src="/app/home/seating-chart.controller.js"></script>
         <script src="/app/header/header.controller.js"></script>        
     </div>
 </div>

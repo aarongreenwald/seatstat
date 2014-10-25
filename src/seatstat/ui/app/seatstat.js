@@ -3,14 +3,4 @@ var seatstat = angular.module('seatstat', [
     'seatstat.home'
     ])
      
-seatstat.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/");
-
-  $stateProvider
-    .state('header', {
-      url: "/",
-      templateUrl: "app/header/header.html"      
-    })
-})
-
 seatstat.home = angular.module('seatstat.home', [])

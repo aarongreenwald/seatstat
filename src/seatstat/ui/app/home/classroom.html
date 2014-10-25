@@ -1,0 +1,32 @@
+<div ng-controller="ClassroomCtrl">
+    <div class="step-header">Classroom Setup</div>
+        <div class="row">
+            Your class has {{class.students.length - 1}} students. How many tables are there in your classroom?
+                <input min="2" ng-model="home.classroom.tableCount" 
+                    ng-change="home.classroom.tableCountChange()" type="number"/> 
+        </div>           
+        <div class="row">
+            <div class="home-table-setup " ng-repeat="table in class.tableSizes">
+                <span class="table"><input class="table-size" ng-model="table.size" type="number" /></span>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .home-table-setup > .table {
+        border: 1px solid gray;        
+        width:100px;
+        height:100px;
+        border-radius:50%;
+        background-color:rgb(206, 200, 200);
+        
+    }
+    .home-table-setup > .table > .table-size {
+        position: relative;
+        left: 30px;
+        top: 35px;             
+    }
+    input{
+        width:40px;   
+    }
+</style>

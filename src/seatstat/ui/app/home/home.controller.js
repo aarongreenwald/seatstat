@@ -1,95 +1,38 @@
-seatstat.home.controller('HomeCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
+seatstat.home.controller('HomeCtrl', ['$scope', '$state', '$http', '$window', 'class', function($scope, $state, $http, $window, $class){
+    
+    $scope.class = $class
+    
     $scope.home = new function(){
-        var utilities = {
-            generateGroups: function(){ 
-                $http({method: 'GET', url: 'api/groups', params: {
-                        members: _.reject(_.pluck(api.members, 'name'), function(member) { return !member }),
-                        restrictions: _.reject(api.restrictions, function(pair) { return !pair[0] || !pair[1]}),
-                        groupSize: api.groupSize             
-                    }
-                })
-                .success(function(data){
-                    api.groups = data
-                    $window.localStorage.setItem('seatstat', angular.toJson({
-                        members: api.members,
-                        restrictions: api.restrictions,
-                        groupSize: api.groupSize
-                    }))
-                })
+        var steps = ['students', 'classroom', 'restrictions', 'seating-chart']
+        
+        var utilities = {        
+            currentStep: function(){
+                return $state.$current.name.split('.')[$state.$current.name.split('.').length - 1]
             }
         }
         
-        var api = {          
-            generateGroups: function(){                
-                utilities.generateGroups()
-                this.step = 2
-            } ,
-                       
-            step: 0,
-            members: [{name: ''}],
-            restrictions: [],
-            groupSize: 5,
+        var api = {                                                    
             
-            evenDivision: function(){
-                return (this.members.length  - 1) % this.groupSize === 0
+            navigate: function(forward){                
+                var current = steps.indexOf($state.$current.name.split('.')[$state.$current.name.split('.').length - 1])
+                var destination = steps[current + (!!forward ? 1: -1)]
+                $state.go($state.$current.parent.name + '.' + destination)
+            },
+                        
+            lastStep: function(){
+                return utilities.currentStep() === steps[steps.length - 1]
             },
             
-            addToRestriction: function(member){    
-                if (!api.validInRestriction(member)){
-                    return
-                }            
-                if (this.restrictions.length > 0 && this.restrictions[this.restrictions.length - 1].length === 1){
-                    this.restrictions[this.restrictions.length - 1].push(member.name)
-                }
-                else {
-                    this.restrictions.push([member.name])
-                }
+            firstStep: function(){
+                return utilities.currentStep() === steps[0]
             },
             
-            removeRestriction: function(index){
-                this.restrictions.splice(index, 1)
-            },
-            
-            midPair: function(){
-                return this.restrictions.length && this.restrictions[this.restrictions.length - 1].length < 2
-            },
-            
-            validInRestriction: function(member){
-                if (api.midPair()){                                    
-                    for (var i in this.restrictions){
-                        if (this.restrictions[i].indexOf(member.name) !== -1 &&
-                            this.restrictions[i].indexOf(this.restrictions[this.restrictions.length - 1][0]) !== -1){
-                            return false
-                        }
-                    }
-                }
-                return true
-            },
-            
-            memberChange: function(index){
-                var last = index === this.members.length - 1                
-                if (this.members[index].name.trim() === ''){
-                    if (index === this.members.length - 2){
-                        this.members.pop()
-                    }
-                }else if (last){
-                     this.members.push({name: ''} )
-                }
-            },
-            
-            memberBlur: function(index){
-                if (this.members[index].name.trim() === '' && index !== this.members.length - 1){
-                    this.members.splice(index, 1)
-                }
-            },
-            
-            duplicateMember: function(member){
-                return _.where(this.members, {name : member.name}).length > 1
+            startOver: function(){
+                return $state.go($state.$current.parent.name + '.' + steps[0])
             }
-            
+                            
         }
-             
-        _.extend(api, JSON.parse($window.localStorage.getItem('seatstat')))
+                    
         return api
     }
 }])

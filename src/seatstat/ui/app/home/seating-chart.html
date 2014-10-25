@@ -1,0 +1,10 @@
+<div ng-controller="SeatingChartCtrl">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ng-repeat="table in class.seatingChart" class="table">
+                <div class="table-header">Table {{$index + 1}} </div>
+                <div class="table-student" ng-repeat="student in table">{{student}}</div>        
+            </div> 
+        </div>
+    </div>        
+</div>

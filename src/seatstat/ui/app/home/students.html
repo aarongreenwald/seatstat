@@ -1,0 +1,12 @@
+<div ng-controller="StudentsCtrl">
+    <div class="step-header">Students</div>        
+    <div class="row" style="max-width:800px">
+        <div ng-repeat="student in class.students" class="student-name">
+            <span class="student-name" >
+                <input class="student-name" ng-model="student.name" 
+                    ng-change="home.students.studentChange($index)" ng-blur="home.studentBlur($index)"
+                    ng-class="{'duplicate': home.students.duplicateStudent(student)}"/>
+            </span>                
+        </div>            
+    </div>   
+</div>
