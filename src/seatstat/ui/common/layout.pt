@@ -14,7 +14,7 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>  
         <link rel="stylesheet" href="common/seatstat.css"/>               
         <div id="container">
-            <a href="/" class="ss-logo">SeatStat</a>            
+            <a href="/" class="ss-logo">SeatStat</a> <span title="This is a pre-release of SeatStat. It is not ready for use." class="ss-version">alpha</span>
             <div id="content">
                 <div metal:define-slot="content"></div>        
             </div>
@@ -32,12 +32,17 @@
                   font-family: 'Bubblegum Sans';                  
                   src: url("lib/font/BubblegumSans-Regular.otf") format("opentype");
             }
-           a.ss-logo{
+            a.ss-logo{
                 text-decoration:none;
                 font-size:28pt;
                 padding:25px;
                 font-family: "Bubblegum Sans";
                 color:#444;
+            }
+            span.ss-version{
+                margin:-25px;
+                /*font-style:italic;*/
+                font-family: "Bubblegum Sans";
             }
             html, body {
                 height:100%;
