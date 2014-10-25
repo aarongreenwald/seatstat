@@ -66,13 +66,11 @@ class MemberSet:
         self.members = members        
         self.restrictions = restrictions
         
-        self.groups = []
-        print('boo')
+        self.groups = []        
         for i in range(0, len(group_sizes)):
             max_size = group_sizes[i]
             members = []
-            self.groups += [Group(max_size, members)]        
-        print self.groups
+            self.groups += [Group(max_size, members)]                
             
 class Group:
     def __init__(self, max_size, members):
