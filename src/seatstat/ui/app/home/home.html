@@ -1,13 +1,27 @@
 <div class="col-md-2"></div>
 <div ng-controller="HomeCtrl" class="container col-md-8">  
     <div ui-view></div>              
+    <div class="alert alert-danger" ng-if="class.validation.messages.length">
+        <div ng-show="class.validation.messages.length === 1">
+            {{class.validation.messages[0]}}        
+        </div>
+        <div ng-show="class.validation.messages.length > 1">
+            Please correct the following issues before continuing:
+            <ul>
+                <li ng-repeat="message in class.validation.messages">
+                    {{message}}
+                </li>
+            </ul>
+        </div>
+    </div> 
     <div class="row no-print" style="margin-top:25px;">
         <div class="pull-left">
             <button ng-if="home.lastStep()" class="btn btn-default btn-sm" ng-click="home.startOver()">Start Over</button>  
             <button ng-if="!home.firstStep()" class="btn btn-default btn-sm" ng-click="home.navigate(false)">Back</button>  
-        </div>
+        </div>    
         <div class="pull-right">
-            <button ng-if="!home.lastStep()" class="btn btn-default btn-sm" ng-click="home.navigate(true)">Next</button>                                          
+            <button ng-if="!home.lastStep()" class="btn btn-default btn-sm" 
+                ng-disabled="!home.valid()" ng-click="home.navigate(true)">Next</button>                                          
             <button ng-if=" home.lastStep()" class="btn btn-default btn-sm" ng-click="home.seatingChart.shuffle()">Shuffle</button>    
         </div>        
     </div>   
