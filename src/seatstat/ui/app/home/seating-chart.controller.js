@@ -11,7 +11,8 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
                         }
                     })
                     .success(function(data){
-                        $class.seatingChart = data                   
+                        $class.seatingChart = data   
+                        api.shuffled = randomize                
                     })
                     .finally(function(){
                         $window.localStorage.setItem('seatstat', angular.toJson({
@@ -31,7 +32,10 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
             var api = {
                 shuffle: function(){
                     utilities.generate(true)
-                }                
+                },
+                print: function(){
+                    $window.print()
+                }              
             }
             
             utilities.initialize()
