@@ -1,7 +1,7 @@
 <div class="col-md-2"></div>
 <div ng-controller="HomeCtrl" class="container col-md-8">  
     <div ui-view></div>              
-    <div class="row" style="margin-top:25px;">
+    <div class="row no-print" style="margin-top:25px;">
         <div class="pull-left">
             <button ng-if="home.lastStep()" class="btn btn-default btn-sm" ng-click="home.startOver()">Start Over</button>  
             <button ng-if="!home.firstStep()" class="btn btn-default btn-sm" ng-click="home.navigate(false)">Back</button>  
