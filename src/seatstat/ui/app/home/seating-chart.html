@@ -3,17 +3,21 @@
         <div class="col-xs-12">
             <div ng-repeat="table in class.seatingChart" class="table">
                 <div class="table-header">Table {{$index + 1}} </div>
-                <div class="table-student" ng-repeat="student in table">{{student}}</div>        
+                    <div class="table-student" ng-repeat="student in table">
+                        <span ng-class="{'table-student-invalid': !student.placementValid}">{{student.name}}</span>
+                    </div>        
             </div> 
         </div>
-    </div>        
-    <div class="row no-print home-seating-chart-shuffled" ng-if="home.seatingChart.shuffled">
-        <div class="col-xs-12">
+    </div>    
+    <div ng-if="home.seatingChart.error" class="alert alert-danger">
+        Uh-oh! I failed to generate a seating chart for you, but I can't quite figure out why.
+        You can <a ng-click="home.seatingChart.generate()">try again</a> if you'd like.
+    </div>    
+    <div class="no-print alert alert-warning" ng-if="home.seatingChart.shuffled && !home.seatingChart.error">        
             This seating chart has been shuffled, so SeatStat will not remember
             it if you leave and come back. Please 
             <a ng-click="home.seatingChart.print()">print this page</a>
-            before navigating away from the seating chart.
-        </div>
+            before navigating away from the seating chart.        
     </div> 
 </div>
 <style>
@@ -22,5 +26,8 @@
         background: pink;
         border-radius:5px;
         padding:15px;
+    }
+    .table-student-invalid{
+        color: red;
     }
 </style>

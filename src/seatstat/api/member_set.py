@@ -8,18 +8,19 @@ class MemberSet:
     def group_is_legal(self, group):
         for pair in self.restrictions:
             if pair[0] in group.members and pair[1] in group.members:
-                return False
+                return False                
         return True
         
     def distribute_restrictions(self):     
-        for pair in self.restrictions:         
-            first = True
-            second = True
+        for pair in self.restrictions:                     
             if pair[0] in self.members:
-                first = self.safely_assign_group(pair[0])
+                self.safely_assign_group(pair[0])
             if pair[1] in self.members:
-                second = self.safely_assign_group(pair[1])
-            #todo: handle the failures   
+                self.safely_assign_group(pair[1])
+            #it's possible that some of these fail to 
+            #find a placement. in that case, they'll be 
+            #handled when we distribute the remaining members and 
+            #marked accordingly during the validation step
             
     def safely_assign_group(self, member):     
         i = 0   
@@ -33,9 +34,9 @@ class MemberSet:
                 i += 1
             else:
                 assigned = True  
-                self.members.remove(member)               
-                
-        return i == len(self.groups)
+                self.members.remove(member)                       
+        #return whether or not the member was successfully placed
+        return i == len(self.groups) 
         
         
     def distribute_remaining_members(self):    
@@ -43,10 +44,29 @@ class MemberSet:
             while len(group.members) < group.max_size and len(self.members) > 0:
                 group.members += [self.members[0]]
                 self.members.pop(0)
+                
+    def validate(self):        
+        for pair in self.restrictions:
+            for group in self.groups:                
+                members = group.members
+                first = pair[0] in members
+                second = pair[1] in members
+                if first != second:
+                    break #this pair is good, the two are separated. 
+                            #go to the next pair
+                elif first and second:
+                    members[members.index(pair[0])].placement_valid = False
+                    members[members.index(pair[1])].placement_valid = False                    
+                #else they're noth not in this group, check the other groups
            
     def groupify(self):
         self.distribute_restrictions()
         self.distribute_remaining_members()
+        #we need to do another pass through of validation to 
+        #because it's possible that we couldn't find a good solution
+        #we'll mark the invalid placements        
+        self.validate()
+        print(self.groups)
         return map((lambda x: x.members), self.groups)
         
     def __init__(self, members, group_sizes, restrictions):
@@ -85,3 +105,5 @@ class Group:
         
     def __repr__(self):
         return str(self)
+        
+

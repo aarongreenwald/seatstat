@@ -29,6 +29,10 @@ seatstat.home.controller('HomeCtrl', ['$scope', '$state', '$http', '$window', 'c
             
             startOver: function(){
                 return $state.go($state.$current.parent.name + '.' + steps[0])
+            },
+            
+            valid: function(){                
+                return $class.validation.isValid(utilities.currentStep())                
             }
                             
         }
