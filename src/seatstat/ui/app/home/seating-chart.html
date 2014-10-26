@@ -6,7 +6,11 @@
                 <div class="table-student" ng-repeat="student in table">{{student}}</div>        
             </div> 
         </div>
-    </div>        
+    </div>    
+    <div ng-if="home.seatingChart.error" class="alert alert-danger">
+        Uh-oh! I failed to generate a seating chart for you, but I can't quite figure out why.
+        You can <a ng-click="home.seatingChart.generate()">try again</a> if you'd like.
+    </div>    
     <div class="no-print alert alert-warning" ng-if="home.seatingChart.shuffled">        
             This seating chart has been shuffled, so SeatStat will not remember
             it if you leave and come back. Please 
