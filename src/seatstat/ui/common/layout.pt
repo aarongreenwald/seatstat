@@ -14,7 +14,7 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>  
         <link rel="stylesheet" href="common/seatstat.css"/>               
         <div id="container">
-            <a href="/" class="ss-logo">SeatStat</a> <span title="This is a pre-release of SeatStat. It is not ready for use." class="ss-version">alpha</span>
+            <a href="/" class="ss-logo">SeatStat</a> <span title="SeatStat is a work-in-progress and is under active development. Give it a whirl, but no guarantees." class="ss-version">beta</span>
             <div id="content">
                 <div metal:define-slot="content"></div>        
             </div>
@@ -52,7 +52,7 @@
                position:relative;
             }
             #content{
-                padding-bottom:50px;
+                padding-bottom:50px;                
             }
             footer {
                 width:100%;

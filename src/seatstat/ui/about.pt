@@ -1,72 +1,85 @@
 <div metal:use-macro="layout">
     <div metal:fill-slot="content">
-        <div class="col-md-3"></div>
-        <div class="container col-md-6">
-            <p>
-                Welcome to SeatStat, the classroom seating solution. 
-                SeatStat saves you time and energy by generating a 
-                workable seating chart for your classroom in no time.
-                Just tell it the names of your students, how many tables
-                you have (and how many students sit at each), and who 
-                can't sit with <span title="whom? I'm so scared of making 
-                grammar mistakes. All these teachers around me!">who<span>.
-            </p>
-         
-            <p>   
-                That's it! SeatStat generates a seating chart for you.
-                Just realized that SeatStat put two children that probably
-                should be separated at the same table? No problem. With a few
-                clicks, you can add the pair under the restrictions section and 
-                regenerate the seating chart. Want to mix it up? Just click 
-                the Shuffle button to move everyone around while honoring your
-                restrictions.
-            </p>
-            
-            <h4>Feedback</h4>
-            <p>            
-                Your feedback and suggestions are welcome. 
-                Please use the little lightbulb on the bottom
-                of the page to submit feedback or suggest features for SeatStat
-                so that others can see what's planned and vote on features. 
-                You can also <a href="mailto:support@seatstat.com">email me</a> directly if you'd like.                            
-            </p>
-            <h4>Developer</h4>
-            <p>
-                SeatStat is developed by 
-                    <a href="http://www.aarongreenwald.com">Aaron Greenwald</a>
-                    , otherwise referred to by pronouns such as "me" and "I"
-                    because I feel really odd speaking about myself in the third person.
-                I do this as a hobby in my free time.
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="container col-md-6">
+             <h2>About</h2>
+                <p>
+                    Welcome to SeatStat, the classroom seating solution. 
+                    SeatStat saves you time and energy by generating a 
+                    workable seating chart for your classroom in no time.
+                    Just tell it the names of your students, how many tables
+                    you have (and how many students sit at each), and who 
+                    can't sit with <span title="whom? I'm so scared of making 
+                    grammar mistakes. All these teachers around me!">who<span>.
+                </p>
+             
+                <p>   
+                    That's it! SeatStat generates a seating chart for you.
+                    Just realized that SeatStat put two children that probably
+                    should be separated at the same table? No problem. With a few
+                    clicks, you can add the pair under the restrictions section and 
+                    regenerate the seating chart. Want to mix it up? Just click 
+                    the Shuffle button to move everyone around while honoring your
+                    restrictions.
+                </p>
                 
-            </p>   
-            <h4>Notice</h4>
-            <p style="font-style:italic">  
-                (Here belongs a long legal notice in tiny print with big 
-                words that I don't understand. 
+                <h4>Feedback</h4>
+                <p>            
+                    SeatStat is developed by 
+                        <a href="http://www.aarongreenwald.com">Aaron Greenwald</a>,
+                        otherwise referred to by pronouns such as "me" and "I"
+                        because I feel really odd speaking about myself in the third person.
+                    I do this as a hobby in my free time, so I cannot guarantee
+                    that SeatStat will work very well or do what you want it to.
+                    But I'm working on it anyway, so your feedback and suggestions are welcome. 
+                    Please use the little lightbulb on the bottom
+                    of the page to submit feedback or suggest features for SeatStat
+                    so that others can see what's planned and vote on features. 
+                    You can also <a href="mailto:support@seatstat.com">email me</a> directly if you'd like.                            
+                </p>
                 
-                 The basic idea 
-                is that this thing is a work in progress, and you're not 
-                paying for it, so I don't really feel bad that it sucks. 
-                There will be bugs, which I will try to fix if you report them to me.
-                And there will (I hope) be lots of new features in the future.
-                You can influence what I work on by taking the time to let 
-                me know what you'd like.)
-                
-            </p>
-            <p> 
-                Ok, here's the abbreviated version. I borrowed it from the MIT
-                License because it sounds smart and I like sounding smart.
-            </p>
-            <p>     
-                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-                THE SOFTWARE.
-            </p>                         
-        
+                <p>
+                    Also, please note that SeatStat is still in beta and is just getting started.
+                    If there's enough interest, I'd consider adding support
+                    for classrooms with desks instead of tables, requirements
+                    for specific students (or types of students, like students with
+                    certain skills) to sit together, and more. Your feedback
+                    will help prioritize what gets done and what doesn't.
+                    
+                </p>   
+                <h4>Legal Notice</h4>
+                <p style="font-style:italic">  
+                    (Here belongs a long legal notice in tiny print with big 
+                    words that I don't understand. 
+                    
+                     The basic idea 
+                    is that this thing is a work in progress, and you're not 
+                    paying for it, so I don't really feel bad that it sucks. 
+                    There will be bugs, which I will try to fix if you report them to me.
+                    And there will (I hope) be lots of new features in the future.
+                    You can influence what I work on by taking the time to let 
+                    me know what you'd like.)
+                    
+                </p>
+                <p> 
+                    Ok, here's the abbreviated version. I borrowed it from the MIT
+                    License because it sounds smart and I like sounding smart.
+                </p>
+                <p>     
+                    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+                    THE SOFTWARE.
+                </p>                         
+            </div>    
         </div>
     </div>
 </div>
+<style>
+    h4 , h2{
+        color: rgb(146, 83, 3);
+    }
