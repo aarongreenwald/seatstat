@@ -2,7 +2,7 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
     
         $scope.home.seatingChart = new function(){
             var utilities = {
-                generate: function(randomize){ 
+                generate: function(randomize){                     
                     $http({method: 'GET', url: 'api/groups', params: {
                             members: _.reject(_.pluck($class.students, 'name'), function(student) { return !student }),
                             restrictions: _.reject($class.restrictions, function(pair) { return !pair[0] || !pair[1]}),
@@ -11,8 +11,13 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
                         }
                     })
                     .success(function(data){
+                        api.error = false
                         $class.seatingChart = data   
                         api.shuffled = randomize                
+                    })
+                    .error(function(error){
+                        $class.seatingChart = null
+                        api.error = true
                     })
                     .finally(function(){
                         $window.localStorage.setItem('seatstat', angular.toJson({
@@ -24,7 +29,7 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
                 },
                 
                 initialize: function(){
-                    this.generate()
+                    this.generate(false)
                 }
                 
             }
@@ -35,7 +40,11 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
                 },
                 print: function(){
                     $window.print()
-                }              
+                },
+                generate: function(){
+                    utilities.generate(false)
+                },
+                error: false
             }
             
             utilities.initialize()

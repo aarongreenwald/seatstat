@@ -20,4 +20,48 @@ a {
     a[href]:after {
         content: none !important;
     }
+}        
+@font-face {
+      font-family: 'Bubblegum Sans';                  
+      src: url("../lib/font/BubblegumSans-Regular.otf") format("opentype");
 }
+a.ss-logo{
+    text-decoration:none;
+    font-size:28pt;
+    padding:25px;
+    font-family: "Bubblegum Sans";
+    color:#444;
+}
+span.ss-version{
+    margin:-25px;
+    /*font-style:italic;*/
+    font-family: "Bubblegum Sans";
+}
+html, body {
+    height:100%;
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+#content{
+    padding-bottom:50px;                
+}
+footer {
+    width:100%;
+    background:rgba(116, 111, 111, 0.79);
+    text-align:center;
+    padding:10px;
+    padding-bottom:30px;                
+    bottom:0;
+    position:absolute;   
+    height:30px;  
+}
+footer > a {
+    color: white;
+    padding-left:15px;
+    padding-right:15px;                
+}
+footer > a:hover{
+    color: black !important;
+}        

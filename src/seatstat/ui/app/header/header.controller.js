@@ -5,7 +5,7 @@ seatstat.controller('HeaderCtrl', ['$scope', '$window', '$timeout', function($sc
         //Perhaps I can do it off of a hash of the content of the message, but that might be too aggressive.
         //Small changes shouldn't invalidate the user's selection
         //Also, I should clear localStorage every now and then
-        var bannerMessageId = 1       
+        var bannerMessageId = 2       
         
         var utilities = {
             hash: function(str){

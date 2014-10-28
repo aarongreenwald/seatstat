@@ -85,7 +85,8 @@
         
     }
     div.ss-home-intro{
-        height: calc(95vh - 110px);        
+        height: calc(95vh - 110px);    
+        padding-top: calc(20vh);
     }
     div.ss-home-intro-details{
         height:5vh;
