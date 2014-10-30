@@ -55,9 +55,11 @@
             <p>
             <ol>
             <li>Type in the names of your students. (SeatStat is magic, but not magical enough to divine their names.)</li>
+            <li>Tell SeatStat how many tables you have in your room (and optionally how many students can sit at each).</li>
             <li>Specify pairs of students that can't sit at the same table as one another. 
                 <span class="ss-home-coming-soon">Coming soon: specify pairs of students that should sit together</span></li>
-            <li>Click 'Next' and you're done! SeatStat generates a seating chart that works for your class.</li>        
+            <li>Click 'Next' and you're done! SeatStat generates a seating chart that works for your class. 
+                You can shuffle it if you'd like to see something different, or print it out and get back to teaching.</li>        
             </ol>
             </p>
             <p>
@@ -116,7 +118,7 @@
     div.center{
         text-align:center;
         width:100%;
-        padding:10px;
+        padding:15px;
     }
 </style>
 
