@@ -45,7 +45,7 @@ html, body {
    position:relative;
 }
 #content{
-    padding-bottom:50px;                
+    padding-bottom:85px;                
 }
 footer {
     width:100%;
@@ -57,11 +57,34 @@ footer {
     position:absolute;   
     height:30px;  
 }
-footer > a {
+
+@media only screen and (max-width : 550px){
+    footer {
+        padding-bottom:50px;
+        height:50px;  
+    }
+    #content{
+        padding-bottom:90px;                
+    }
+     div.ss-home-intro{
+        height: calc(95vh - 130px);            
+    }
+}
+
+footer  a {
     color: white;
     padding-left:15px;
     padding-right:15px;                
 }
-footer > a:hover{
+footer a:hover{
     color: black !important;
 }        
+.ss-footer-section{
+    border-left: 1px solid black;
+}
+.ss-footer-section-header{
+    padding-left:15px;
+    padding-right:15px;                
+    font-size:large;
+    text-align:left;
+}
