@@ -36,7 +36,7 @@
                     Please use the little lightbulb on the bottom
                     of the page to submit feedback or suggest features for SeatStat
                     so that others can see what's planned and vote on features. 
-                    You can also <a href="mailto:support@seatstat.com">email me</a> directly if you'd like.                            
+                    You can also <a href="mailto:support@seatstat.com">email me</a> directly if you'd like.                                                                    
                 </p>
                 
                 <p>
@@ -48,6 +48,12 @@
                     will help prioritize what gets done and what doesn't.
                     
                 </p>   
+                <p>
+                    If you'd like to stay up-to-date on new features or changes 
+                    to SeatStat, follow SeatStat on
+                    <a href="https://twitter.com/seatstat">twitter</a> or like it on
+                    <a href="https://www.facebook.com/pages/SeatStat/518430788259350">facebook</a>.
+                </p>
                 <h4>Legal Notice</h4>
                 <p style="font-style:italic">  
                     (Here belongs a long legal notice in tiny print with big 
@@ -74,8 +80,19 @@
                     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
                     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
                     THE SOFTWARE.
-                </p>                         
-            </div>    
+                </p>  
+                <!-- I hate social media buttons. They're ugly and annoying. I have to find a better way to 
+                market this. -->
+               <!--
+               <div id="fb-root"></div>
+                <div class="ss-social-media no-print">
+                    <div class="fb-like" data-href="https://www.facebook.com/pages/SeatStat/518430788259350" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+                    <a href="https://twitter.com/seatstat" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false" data-dnt="true">Follow @seatstat</a>
+                    <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
+                   -->                    
+            </div>            
         </div>
     </div>
 </div>
@@ -83,3 +100,4 @@
     h4 , h2{
         color: rgb(146, 83, 3);
     }
+</style>
