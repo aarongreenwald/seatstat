@@ -1,5 +1,5 @@
 <div metal:use-macro="layout">
-    <div metal:fill-slot="content">
+    <div metal:fill-slot="content" class="container">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="container col-md-6">
@@ -20,7 +20,7 @@
                     should be separated at the same table? No problem. With a few
                     clicks, you can add the pair under the restrictions section and 
                     regenerate the seating chart. Want to mix it up? Just click 
-                    the Shuffle button to move everyone around while honoring your
+                    the Shuffle button to move everyone around while still honoring your
                     restrictions.
                 </p>
                 
