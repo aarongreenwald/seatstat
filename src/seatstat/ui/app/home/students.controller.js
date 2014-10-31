@@ -27,6 +27,10 @@ seatstat.home.controller('StudentsCtrl', ['$scope', 'class', function($scope, $c
             
             duplicateStudent: function(student){
                 return _.where($class.students, {name : student.name}).length > 1
+            },
+            
+            loadSampleData: function(){
+                $class.initializeSample()
             }
        }
        

@@ -2,7 +2,12 @@ seatstat.home.factory('class', ['$window', function($window){
     return new function(){
         var utilities = {
             validateStudents: function(){
-                if (api.students.length < 4){
+                //there's always a blank student. so if there's only one (blank) student,
+                //show the "load sample data" message instead of a validation error
+                if (api.students.length === 1){
+                    return ''
+                }                
+                if (api.students.length > 1 && api.students.length < 4){
                     return 'You must add at least three students for SeatStat to work properly.'
                 }
                 for (var i = 0; i < api.students.length - 2; i++){
@@ -57,16 +62,62 @@ seatstat.home.factory('class', ['$window', function($window){
                             validationFunctions.push(utilities.validateRestrictions)  
                     }
                     var validationMessages = []
+                    var valid = true
                     for (var i = 0; i < validationFunctions.length; i++){
                         var result = validationFunctions[i]()
-                        if (result){                            
-                            validationMessages.push(result)
-                        }
+                        if (result != undefined){
+                            valid = false
+                            if (result != ''){ //an empty string result isn't valid but contains no message
+                                validationMessages.push(result)
+                            }
+                        }                        
                     }                    
                     this.messages = validationMessages
-                    return validationMessages.length === 0
+                    return valid
                 },
                 messages: []                            
+            },
+            initializeSample: function(){
+                this.students = [
+                    {name: 'Alice' },
+                    {name: 'Barry' },
+                    {name: 'Charlie' },
+                    {name: 'Denise' },
+                    {name: 'Elsa' },
+                    {name: 'Farah' },
+                    {name: 'Greg' },
+                    {name: 'Holly' },
+                    {name: 'Ian' },
+                    {name: 'Jess' },
+                    {name: 'Kara' },
+                    {name: 'Liam' },
+                    {name: 'Mallory' },
+                    {name: 'Neil' },
+                    {name: 'Oscar' },
+                    {name: 'Patricia' },
+                    {name: 'Quentin' },
+                    {name: 'Rob' },
+                    {name: 'Sara' },
+                    {name: 'Tina' },
+                    {name: 'Ursula' },
+                    {name: 'Veronica' },
+                    {name: 'Walt' },
+                    {name: 'Xavier' },
+                    {name: 'Yuri' },
+                    {name: 'Zoey' },
+                    {name: '' }
+                ]
+                this.tableSizes = [{size: 5},{size: 5},{size: 5},{size: 5},{size: 6}]
+                this.restrictions = [
+                    ['Kara', 'Mallory'],
+                    ['Kara', 'Zoey'],
+                    ['Kara', 'Walt'],
+                    ['Rob', 'Walt'],
+                    ['Rob', 'Kara'],
+                    ['Rob', 'Tina'],
+                    ['Liam', 'Sara'],
+                    ['Barry', 'Oscar']
+                ]
             }
         }
         

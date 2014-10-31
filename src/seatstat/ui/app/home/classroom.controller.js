@@ -1,10 +1,8 @@
 seatstat.home.controller('ClassroomCtrl', ['$scope', 'class', function($scope, $class){
     $scope.home.classroom = new function(){
         var utilities = {
-            initialize: function(){
-                if ($class.tableSizes.length){
-                    api.tableCount = $class.tableSizes.length
-                }
+            initialize: function(){                
+                api.tableCount = $class.tableSizes.length               
             }
         }
         

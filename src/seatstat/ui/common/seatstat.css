@@ -28,14 +28,20 @@ a {
 a.ss-logo{
     text-decoration:none;
     font-size:28pt;
-    padding:25px;
+    padding-top:25px;
+    margin-left:10px;
     font-family: "Bubblegum Sans";
     color:#444;
+   /* color:rgba(213, 63, 63, 0.92);*/
 }
 span.ss-version{
-    margin:-25px;
-    /*font-style:italic;*/
-    font-family: "Bubblegum Sans";
+    margin-left:-5px;
+    font-size:12pt;    
+}
+div.ss-tagline{
+    margin-top:-10px;    
+    font-size:9pt;
+    margin-left:10px;
 }
 html, body {
     height:100%;
