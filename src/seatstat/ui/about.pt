@@ -1,8 +1,8 @@
 <div metal:use-macro="layout">
-    <div metal:fill-slot="content" class="container">
+    <div metal:fill-slot="content">
         <div class="row">
             <div class="col-md-3"></div>
-            <div class="container col-md-6">
+            <div class="col-md-6" style="padding-left:15px;padding-right:15px;">
              <h2>About</h2>
                 <p>
                     Welcome to SeatStat, the classroom seating solution. 
