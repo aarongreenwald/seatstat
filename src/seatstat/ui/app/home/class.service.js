@@ -39,8 +39,10 @@ seatstat.home.factory('class', ['$window', function($window){
             },
        
             validateSeatingChart: function(seatingChart){
-                for (var i = 0; i < api.restrictions.length; i++){
-                    
+                //first reset everyone to valid because things may have change since last time 
+                //this was run 
+                seatingChart = _.map(seatingChart, function(table) {return _.map(table, function(student) { student.placementValid = true; return student }) })                
+                for (var i = 0; i < api.restrictions.length; i++){                    
                     for (var j = 0; j < seatingChart.length; j++){
                         var first = _.where(seatingChart[j], {name :api.restrictions[i][0]}).length !== 0
                         var second = _.where(seatingChart[j], {name :api.restrictions[i][1]}).length !== 0
@@ -100,7 +102,7 @@ seatstat.home.factory('class', ['$window', function($window){
                     return valid
                 },
                 messages: [] ,
-                validateSeating: utilities.validateSeatingChart                           
+                validateSeatingChart: utilities.validateSeatingChart                           
             },
             initializeSample: function(){
                 this.students = [

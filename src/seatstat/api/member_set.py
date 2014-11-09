@@ -64,7 +64,8 @@ class MemberSet:
         self.distribute_remaining_members()
         #we need to do another pass through of validation to 
         #because it's possible that we couldn't find a good solution
-        #we'll mark the invalid placements        
+        #we'll mark the invalid placements   
+        #TODO - perhaps unnecessary because we can do that client-side?
         self.validate()
         print(self.groups)
         return map((lambda x: x.members), self.groups)
