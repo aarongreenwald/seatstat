@@ -36,6 +36,32 @@ seatstat.home.factory('class', ['$window', function($window){
                         return 'You have names listed in your restrictions section that are not in the students list.'
                     }
                 }
+            },
+       
+            validateSeatingChart: function(seatingChart){
+                //first reset everyone to valid because things may have change since last time 
+                //this was run 
+                seatingChart = _.map(seatingChart, function(table) {return _.map(table, function(student) { student.placementValid = true; return student }) })                
+                for (var i = 0; i < api.restrictions.length; i++){                    
+                    for (var j = 0; j < seatingChart.length; j++){
+                        var first = _.where(seatingChart[j], {name :api.restrictions[i][0]}).length !== 0
+                        var second = _.where(seatingChart[j], {name :api.restrictions[i][1]}).length !== 0
+                        if (first !== second){
+                            // this restriction is fine, 
+                            //continue to next restriction                            
+                            break
+                        }
+                        else if (first && second){                            
+                            _.where(seatingChart[j], {name :api.restrictions[i][0]})[0].placementValid = false
+                            _.where(seatingChart[j], {name :api.restrictions[i][1]})[0].placementValid = false                            
+                            //these are invalid
+                        }
+                        //else they're both not on this table, continue to next table
+                        //if it's the last table they'll certainly be invalid
+
+                    }    
+                }
+                
             }
         }
         
@@ -75,7 +101,8 @@ seatstat.home.factory('class', ['$window', function($window){
                     this.messages = validationMessages
                     return valid
                 },
-                messages: []                            
+                messages: [] ,
+                validateSeatingChart: utilities.validateSeatingChart                           
             },
             initializeSample: function(){
                 this.students = [

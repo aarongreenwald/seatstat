@@ -11,7 +11,7 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
                         }
                     })
                     .success(function(data){
-                        api.error = false
+                        api.error = false                        
                         $class.seatingChart = data   
                         api.shuffled = randomize                
                     })
@@ -29,7 +29,7 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
                 },
                 
                 initialize: function(){
-                    this.generate(false)
+                    this.generate(false)                                    
                 }
                 
             }
@@ -44,7 +44,7 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
                 generate: function(){
                     utilities.generate(false)
                 },
-                error: false
+                error: false                
             }
             
             utilities.initialize()
