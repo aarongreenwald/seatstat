@@ -3,9 +3,9 @@
         <div class="col-xs-12">
             <div ng-repeat="table in class.seatingChart" class="table">
                 <div class="table-header">Table {{$index + 1}} </div>
-                    <div class="table-student" style="margin:3px;"                    
-                    ss-seating-chart="{key: student.name}"
-                    ng-repeat="student in table">
+                    <div class="table-student draggable" style="margin-bottom:3px;"                    
+                        ss-seating-chart="{dragDropKey: student.name}"
+                        ng-repeat="student in table">
                         <span ng-class="{'table-student-invalid': !student.placementValid}">{{student.name}}</span>
                     </div>        
             </div> 
@@ -33,4 +33,15 @@
     .table-student-invalid{
         color: red;
     }
+    .table-student.draggable{        
+        cursor:pointer;        
+    }
+    .table-student.draggable:hover:not(.ss-home-seating-chart-dragging){        
+        /*background-color:beige; */
+        /*for some reason this looks screwy on drop */
+    }
+    .ss-home-seating-chart-dragging{        
+        opacity:.6;
+        font-style:italic;
+    }     
 </style>
