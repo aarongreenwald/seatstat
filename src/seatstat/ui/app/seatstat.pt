@@ -20,6 +20,7 @@
         <script src="/app/home/restrictions.controller.js"></script>
         <script src="/app/home/seating-chart.controller.js"></script>
         <script src="/app/home/ss-seating-chart.directive.js"></script>
+        <script src="/app/home/ss-help.directive.js"></script>
         <script src="/app/header/header.controller.js"></script>        
     </div>
 </div>

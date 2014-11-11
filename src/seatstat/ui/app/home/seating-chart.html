@@ -11,7 +11,10 @@
             </div> 
         </div>
     </div>    
-    
+    <div ss-help>
+        Drag and drop students from one table to another to rearrange the classroom.
+        If you place incompatible students together, both of their names will turn red.
+    </div>  
     <div ng-if="home.seatingChart.error" class="alert alert-danger">
         Uh-oh! I failed to generate a seating chart for you, but I can't quite figure out why.
         You can <a ng-click="home.seatingChart.generate()">try again</a> if you'd like.
