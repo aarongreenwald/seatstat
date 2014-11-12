@@ -1,6 +1,10 @@
 <div ng-controller="SeatingChartCtrl">
     <div class="row">
         <div class="col-xs-12">
+        <div ss-help class="pull-left">
+            Drag and drop students from one table to another to rearrange the classroom.
+            If you place incompatible students together, both of their names will turn red.
+        </div>  
             <div ng-repeat="table in class.seatingChart" class="table">
                 <div class="table-header">Table {{$index + 1}} </div>
                     <div class="table-student draggable" style="margin-bottom:3px;"                    
@@ -11,10 +15,6 @@
             </div> 
         </div>
     </div>    
-    <div ss-help>
-        Drag and drop students from one table to another to rearrange the classroom.
-        If you place incompatible students together, both of their names will turn red.
-    </div>  
     <div ng-if="home.seatingChart.error" class="alert alert-danger">
         Uh-oh! I failed to generate a seating chart for you, but I can't quite figure out why.
         You can <a ng-click="home.seatingChart.generate()">try again</a> if you'd like.

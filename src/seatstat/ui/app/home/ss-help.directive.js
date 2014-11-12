@@ -3,13 +3,14 @@ seatstat.home.directive('ssHelp', [function(){
         restrict: 'A',
         transclude: true,
         replace: false,
-        template: '<span><span class="glyphicon glyphicon-ok"></span><span style="display:none;" ng-transclude></span></span>',
+        templateUrl: 'app/home/ss-help.html',
         link: function(scope, element, attributes){
-            var icon = jQuery(element.children().children()[0])
-            var help = jQuery(element.children().children()[1])
+            var icon = jQuery(element.children().children('i'))
+            var help = jQuery(element.children().children('div'))                        
             icon.bind('click', function(){
-                help.toggle()
+                help.toggle()                
             })
+                        
         }
     }
 }])
