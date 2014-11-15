@@ -94,3 +94,24 @@ footer a:hover{
     font-size:large;
     text-align:left;
 }
+.ss-help-icon{
+    opacity:.6;    
+    cursor:pointer;
+    font-size:12pt;
+}
+.ss-help-icon:hover{
+    opacity:.9;    
+}
+.ss-help{
+    display:none;
+    border: 1px solid rgba(119, 155, 26, 0.55);
+    padding: 5px 10px 5px 10px;
+    position: relative;
+    background-color: beige;
+    border-radius: 4px;
+    max-width: 400px;
+    z-index: 999;
+    top:-25px;
+    left:25px;
+    font-size:13px;
+}
