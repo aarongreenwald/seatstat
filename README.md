@@ -24,14 +24,14 @@ Clone this repository and cd to the ./seatstat directory (relative to this file)
 - mkdir ../env
 - virtualenv ../env
 - ../env/bin/python setup.py develop
+- Create development.ini (see sample.ini for an example) and set the database connection and port correctly.
 - ../env/bin/pserve development.ini
 
 Have fun!
 
-For production, you will need to add production.ini and set the port correctly.
+For production, you will need to also add a file named production.ini and set the settings there correctly.
 
-(You may need to install some things along the way, like virtualenv. It should be self-explanatory, unless you're on a Windows system. 
-Then I recommend switching operating systems or finding someone with more patience than I have.)
+(You may need to install some things along the way, like virtualenv. It should be self-explanatory, perhaps with the help of Google.)
 
 License
 ---------------
