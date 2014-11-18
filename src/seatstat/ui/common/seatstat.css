@@ -115,3 +115,8 @@ footer a:hover{
     left:25px;
     font-size:13px;
 }
+.ss-help-browser-incompatible{
+    font-size:11px;
+    font-style:italic;
+    margin-top:5px;
+}

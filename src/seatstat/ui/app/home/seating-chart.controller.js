@@ -44,7 +44,11 @@ seatstat.home.controller('SeatingChartCtrl', ['$scope', '$http', '$window', 'cla
                 generate: function(){
                     utilities.generate(false)
                 },
-                error: false                
+                error: false,              
+                draggableSupport: new function(){
+                    //determine whether the browser supports drag and drop
+                    return 'draggable' in document.createElement('span')
+                }
             }
             
             utilities.initialize()

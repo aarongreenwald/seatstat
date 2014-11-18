@@ -83,17 +83,14 @@ seatstat.home.directive('ssSeatingChart', ['ssSeatingChartDnD', 'class', functio
                 }                                
                 ssSeatingChartDnD.source.classList.remove('ss-home-seating-chart-dragging')                
             }
-                    
-                  
+                                      
             element.attr('data-dragdrop-key', dragDropKey)
             element.attr('draggable', 'true')                 
             element.bind('dragstart', dragStart)              
             element.bind('dragover', dragOver)                            
             element.bind('dragend', dragEnd)
             element.bind('dragenter', dragEnter)
-            element.bind('dragleave', dragLeave)
-           
-                    
+            element.bind('dragleave', dragLeave)                                
         }
     }
 
