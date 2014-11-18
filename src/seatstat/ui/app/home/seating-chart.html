@@ -1,9 +1,13 @@
 <div ng-controller="SeatingChartCtrl">
     <div class="row">
         <div class="col-xs-12">
-        <div ss-help class="pull-left">
-            Drag and drop students from one table to another to rearrange the classroom.
-            If you place incompatible students together, both of their names will turn red.
+        <div ss-help class="pull-left no-print">            
+                Drag and drop students from one table to another to rearrange the classroom.
+                If you place incompatible students together, both of their names will turn red.            
+            <div ng-show="!home.seatingChart.draggableSupport" class="ss-help-browser-incompatible">
+                Your browser does not appear to support drag and drop functionality. This is usually because 
+                you are using a touchscreen. To enable this feature, try switching to a different browser/device.                                
+            </div>
         </div>  
             <div ng-repeat="table in class.seatingChart" class="table">
                 <div class="table-header">Table {{$index + 1}} </div>
