@@ -7,3 +7,13 @@ create table user_access (
     query_string varchar null,
     body varchar null   
 )
+
+create table app_user 
+(
+  app_user_id serial primary key NOT NULL,
+  first_name varchar NOT NULL,
+  last_name varchar NOT NULL,
+  email varchar UNIQUE NOT NULL,
+  password varchar NOT NULL,
+  created_datetime timestamp without time zone NOT NULL,    
+)
