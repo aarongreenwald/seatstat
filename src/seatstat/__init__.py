@@ -1,9 +1,6 @@
 from pyramid.config import Configurator
 from sqlalchemy import engine_from_config
 
-from pyramid.events import NewRequest
-from infrastructure import logging
-
 from api import models
 
 def main(global_config, **settings):

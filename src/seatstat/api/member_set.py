@@ -66,8 +66,7 @@ class MemberSet:
         #because it's possible that we couldn't find a good solution
         #we'll mark the invalid placements   
         #TODO - perhaps unnecessary because we can do that client-side?
-        self.validate()
-        print(self.groups)
+        self.validate()        
         return map((lambda x: x.members), self.groups)
         
     def __init__(self, members, group_sizes, restrictions):

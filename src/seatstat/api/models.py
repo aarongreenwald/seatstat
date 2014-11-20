@@ -4,7 +4,6 @@ from sqlalchemy.orm import (
     scoped_session,
     sessionmaker,
     )
-import csv    
 import datetime
         
 from zope.sqlalchemy import ZopeTransactionExtension
