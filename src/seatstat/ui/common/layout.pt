@@ -31,22 +31,18 @@
                 <a href="https://www.facebook.com/pages/SeatStat/518430788259350" title="Like SeatStat on Facebook">Like</a>          
                 <a href="https://twitter.com/seatstat" title="Follow SeatStat on Twitter">Follow</a>            
                 <a href="http://www.aarongreenwald.com" title="About the SeatStat developer">Developer</a>
-                <a href="http://github.com/aarongreenwald/seatstat" title="SeatStat's source code">GitHub</a>                                                                                                             
+                <a href="http://github.com/aarongreenwald/seatstat" title="SeatStat's source code">GitHub<a>                                                                                                                
             </footer>
         </div>
         <script src="common/feedback.js"></script>  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-62293897-2', 'auto');
+	  ga('send', 'pageview');
+	</script>
     </body>
 </html>
-              <--  <div class="row">
-                    <div class="col-md-4 col-xs-1"></div>
-                    <div class="col-xs-2">                        
-                        <div><a href="/about">About</a></div>
-                        <div><a href="http://www.aarongreenwald.com">Developer</a></div>                        
-                        <div><a href="http://github.com/aarongreenwald/seatstat">GitHub</a></div> 
-                    </div>
-                      <div class="col-xs-2">                        
-                        <div><a href="http://seatstat.uservoice.com">Feedback</a></div>
-                        <div><a href="https://www.facebook.com/pages/SeatStat/518430788259350?">Facebook</a></div>
-                        <div><a href="https://twitter.com/seatstat">Twitter</a></div>
-                    </div>                    
-                </div>   -->
